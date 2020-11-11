@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-remark-plantuml-lite",
+  "version": "0.0.1",
+  "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
+  "main": "src/index.ts",
+  "repository": "git@github.com:Mogeko/gatsby-remark-plantuml-lite.git",
+  "author": "Mogeko <zhengjunyi@live.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "remark": "^13.0.0",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "unist-util-visit": "^2.0.3"
+  }
+}
