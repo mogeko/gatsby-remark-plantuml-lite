@@ -1,9 +1,8 @@
 declare module "plantuml-encoder" {
-  export =  {
+  export = {
     encode,
-    decode,
+    decode
   }
   declare function encode(puml: string): string
   declare function decode(encoded: string): string
 }
-
