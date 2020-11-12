@@ -1,3 +1,6 @@
+# default
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -13,6 +16,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 junit.xml
+
+# Compiled by TypeScript
+/dist
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
