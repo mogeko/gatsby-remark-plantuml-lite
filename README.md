@@ -3,7 +3,7 @@
 [![Test and Build](https://github.com/Mogeko/gatsby-remark-plantuml-lite/workflows/Test%20and%20Build/badge.svg)](https://github.com/Mogeko/gatsby-remark-plantuml-lite/actions?query=workflow%3A%22Test+and+Build%22)
 [![codecov](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite)
 
-A light Gatsby plugin to transform [PlantUML](plantuml.com/) code blocks into SVG images(**without Java and Graphviz**).
+**A** light **Gatsby plugin to transform [PlantUML](plantuml.com/) code blocks into SVG images(_without Java and Graphviz_).**
 
 ## Install
 
@@ -25,7 +25,7 @@ This plugin depends on:
 
 And it will act as a plugin for `gatsby-transformer-remark`.
 
-**This plugin is implemented using pure TypeScript, using the Server API officially provided by PlantUML, and does not need to depends on Java and Graphviz locally.**
+**This plugin is implemented using pure TypeScript, using the [Server API](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000) officially provided by PlantUML, and does not need to depends on Java and Graphviz locally.**
 
 ## How to use
 
@@ -44,7 +44,7 @@ plugins: [
         // Please make sure the order of `gatsby-remark-plantuml-lite`
         // before the `gatsby-remark-prismjs` and 
         // after the `gatsby-remark-code-titles`.
-        // If they exist
+        // If they exist.
         `gatsby-remark-plantuml-lite`,
         `gatsby-remark-prismjs`,
       ],
