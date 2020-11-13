@@ -10,16 +10,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: to NPM
-            registry-url: https://registry.npmjs.org
-            token-name: NPM_TOKEN
-          - name: to GitHub Packages
-            registry-url: https://npm.pkg.github.com
-            token-name: GH_TOKEN
 
     steps:
     - name: Checkout
@@ -28,7 +18,7 @@ jobs:
     - name: Setup registry url with NPM
       uses: actions/setup-node@v1
       with:
-        registry-url: ${{ matrix.registry-url }}
+        registry-url: https://registry.npmjs.org
 
     - name: Install dependencies
       run: yarn install --frozen-lockfile
@@ -37,14 +27,32 @@ jobs:
       run: yarn run build
 
     - name: Publish release @latest
+      run: yarn publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      if: ${{!contains(github.ref, '-alpha')}}
+
+    - name: Publish release @next
+      run: yarn publish --access public --tag next
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      if: ${{contains(github.ref, '-alpha')}}
+
+    - name: Setup registry url with GitHub Packages
+      uses: actions/setup-node@v1
+      with:
+        registry-url: https://npm.pkg.github.com
+        scope: '@mogeko'
+
+    - name: Publish release @latest
       run: yarn publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets[matrix.token-name] }}
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: ${{!contains(github.ref, '-alpha')}}
 
     - name: Publish release @next
       run: yarn publish --tag next
       env:
-        NODE_AUTH_TOKEN: ${{ secrets[matrix.token-name] }}
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: ${{contains(github.ref, '-alpha')}}
 ...
