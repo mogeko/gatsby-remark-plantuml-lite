@@ -1,9 +1,8 @@
 # gatsby-remark-plantuml-lite
 
 [![Test and Build](https://github.com/Mogeko/gatsby-remark-plantuml-lite/workflows/Test%20and%20Build/badge.svg)](https://github.com/Mogeko/gatsby-remark-plantuml-lite/actions?query=workflow%3A%22Test+and+Build%22)
-[![codecov](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite)
 
-**A** light **Gatsby plugin to transform [PlantUML](https://plantuml.com/) code blocks into SVG images(_without Java and Graphviz_).**
+**A** light **Gatsby plugin to transform [PlantUML](https://plantuml.com/) code blocks into SVG/PNG images(_without Java and Graphviz_).**
 
 ## Install
 
@@ -45,7 +44,12 @@ plugins: [
         // before the `gatsby-remark-prismjs` and 
         // after the `gatsby-remark-code-titles`.
         // If they exist.
-        `gatsby-remark-plantuml-lite`,
+        {
+          resplve: `gatsby-remark-plantuml-lite`,
+          options: { // Configuration options
+            imageType: `svg`
+          }
+        },
         `gatsby-remark-prismjs`,
       ],
     },
@@ -54,7 +58,28 @@ plugins: [
 ]
 ```
 
-> It will support optional configurations in the future.
+### Options
+
+Configure this plugin:
+
+```javascript
+// other plugins ...
+{
+  resplve: `gatsby-remark-plantuml-lite`,
+  options: { // Configuration options
+    imageType: `svg` // `svg` or `png`, default is `svg`
+  }
+},
+// other plugins ...
+```
+
+Details of configuration options:
+
+| Name        | Values         | Default | Description                                     |
+|:-----------:|:--------------:|:-------:|:-----------------------------------------------:|
+| `imageType` | `svg` or `png` | `svg`   | Type of PlantUML image returned from Web Server |
+
+### Use in Markdown
 
 Then write PlantUML in the code block of Markdown, and specify the language type of `plantuml` in the code block.
 
@@ -71,6 +96,8 @@ Alice <-- Bob: Another authentication Response
 @enduml
 ```
 ````
+
+![PlantUML Example](https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9MGw6ARNHryQb66EwGcfS2T300)
 
 More PlantUML syntax can be learned in the [official PlantUML documentation](https://plantuml.com/).
 
