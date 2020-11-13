@@ -34,18 +34,6 @@ test("更复杂的案例", () => {
   expect(result).toStrictEqual(example)
 })
 
-test("测试编码是否正确", () => {
-  const raw = remark().parse(`
-  \`\`\`plantuml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `)
-  const url = remarkPlantUML({ markdownAST: raw }).children[0].children[0].url
-  expect(url).toMatch(/SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/)
-})
-
 test("Markdown 的嵌套", () => {
   const raw = remark().parse(`
   > \`\`\`plantuml
