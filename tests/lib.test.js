@@ -12,7 +12,7 @@ test("基础测试", () => {
   `)
   const example = JSON.parse(fs.readFileSync("./tests/examples/test.data.0.json"))
   const result = JSON.parse(JSON.stringify(nodeOperator.default(raw, (encoded) => {
-    return `http://www.plantuml.com/plantuml/svg/${encoded}`
+    return `https://www.plantuml.com/plantuml/svg/${encoded}`
   })))
   expect(result).toStrictEqual(example)
 })
