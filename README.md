@@ -24,7 +24,7 @@ This plugin depends on:
 
 And it will act as a plugin for `gatsby-transformer-remark`.
 
-**This plugin is implemented using pure TypeScript, using the [Server API](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000) officially provided by PlantUML, and does not need to depends on Java and Graphviz locally.**
+**This plugin is implemented using pure TypeScript, using the [Web Server API](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000) officially provided by PlantUML, and does not need to depends on Java and Graphviz locally.**
 
 ## How to use
 
@@ -56,6 +56,7 @@ plugins: [
   },
   // other plugins ...
 ]
+// ...
 ```
 
 ### Options
