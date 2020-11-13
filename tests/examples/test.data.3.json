@@ -1,0 +1,40 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "alt": "PlantUML",
+          "position": {
+            "end": {
+              "column": 6,
+              "line": 6,
+              "offset": 64
+            },
+            "start": {
+              "column": 3,
+              "line": 2,
+              "offset": 3
+            }
+          },
+          "title": null,
+          "type": "image",
+          "url": "https://www.plantuml.com/plantuml/png/SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80"
+        }
+      ],
+      "type": "paragraph"
+    }
+  ],
+  "position": {
+    "end": {
+      "column": 3,
+      "line": 7,
+      "offset": 67
+    },
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}
