@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/*.d.ts",
   "homepage": "https://github.com/Mogeko/gatsby-remark-plantuml-lite",
   "repository": "git@github.com:Mogeko/gatsby-remark-plantuml-lite.git",
   "bugs": {
@@ -25,7 +25,7 @@
   "scripts": {
     "build": "tsc",
     "release": "npm run build && npm publish",
-    "test": "npm run build && jest ./tests",
+    "test": "npm run build && jest ./tests --watch",
     "coverage": "npm run build && jest --coverage"
   },
   "devDependencies": {
