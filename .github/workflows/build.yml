@@ -32,5 +32,4 @@ jobs:
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        env_vars: OS,TYPESCRIPT
 ...
