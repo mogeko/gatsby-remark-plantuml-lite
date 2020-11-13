@@ -1,0 +1,57 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "alt": "PlantUML",
+              "position": {
+                "end": {
+                  "column": 8,
+                  "line": 6,
+                  "offset": 74
+                },
+                "start": {
+                  "column": 5,
+                  "line": 2,
+                  "offset": 5
+                }
+              },
+              "title": null,
+              "type": "image",
+              "url": "http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80"
+            }
+          ],
+          "type": "paragraph"
+        }
+      ],
+      "position": {
+        "end": {
+          "column": 8,
+          "line": 6,
+          "offset": 74
+        },
+        "start": {
+          "column": 3,
+          "line": 2,
+          "offset": 3
+        }
+      },
+      "type": "blockquote"
+    }
+  ],
+  "position": {
+    "end": {
+      "column": 3,
+      "line": 7,
+      "offset": 77
+    },
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0
+    }
+  },
+  "type": "root"
+}

@@ -14,16 +14,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - registry-url: https://registry.npmjs.org
+          - name: to NPM
+            registry-url: https://registry.npmjs.org
             token-name: NPM_TOKEN
-          - registry-url: https://npm.pkg.github.com
-            token-name: GITHUB_TOKEN
+          - name: to GitHub Packages
+            registry-url: https://npm.pkg.github.com
+            token-name: GH_TOKEN
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Setup registry url with npm
+    - name: Setup registry url with NPM
       uses: actions/setup-node@v1
       with:
         registry-url: ${{ matrix.registry-url }}
