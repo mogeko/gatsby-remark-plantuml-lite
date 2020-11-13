@@ -19,6 +19,7 @@ junit.xml
 
 # Compiled by TypeScript
 /dist
+/types
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
