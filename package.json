@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-remark-plantuml-lite",
+  "name": "@mogeko/gatsby-remark-plantuml-lite",
   "version": "0.0.3-alpha.2",
   "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
   "main": "dist/index.js",
