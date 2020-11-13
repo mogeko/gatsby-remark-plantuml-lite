@@ -1,12 +1,19 @@
 import nodeOperator from "./lib"
 import { Node } from "unist"
 
-type ParsedTypes = {
+interface ParsedTypes {
   markdownAST: Node,
 }
 
-module.exports = ({ markdownAST }: ParsedTypes, pluginOptions: unknown) => {
+interface OptionTypes {
+  imageType?: "svg" | "png",
+}
+
+module.exports = ({ markdownAST }: ParsedTypes, pluginOptions?: OptionTypes) => {
+  const imageType = pluginOptions?.imageType
+    ? pluginOptions.imageType
+    : "svg"
   return nodeOperator(markdownAST, (encoded) => {
-    return `http://www.plantuml.com/plantuml/svg/${encoded}`
+    return `https://www.plantuml.com/plantuml/${imageType}/${encoded}`
   })
 }
