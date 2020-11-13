@@ -42,7 +42,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         registry-url: https://npm.pkg.github.com
-        scope: @mogeko
+        scope: '@mogeko'
 
     - name: Publish release @latest
       run: yarn publish
