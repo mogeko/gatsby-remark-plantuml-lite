@@ -1,6 +1,8 @@
 # gatsby-remark-plantuml-lite
 
 [![Test and Build](https://github.com/Mogeko/gatsby-remark-plantuml-lite/workflows/Test%20and%20Build/badge.svg)](https://github.com/Mogeko/gatsby-remark-plantuml-lite/actions?query=workflow%3A%22Test+and+Build%22)
+[![codecov](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite)
+
 
 **A** light **Gatsby plugin to transform [PlantUML](https://plantuml.com/) code blocks into SVG/PNG images(_without Java and Graphviz_).**
 
@@ -97,6 +99,10 @@ Alice <-- Bob: Another authentication Response
 @enduml
 ```
 ````
+
+This plugin will replace PlantUML code blocks with PlantUML image.
+
+like this:
 
 ![PlantUML Example](https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9MGw6ARNHryQb66EwGcfS2T300)
 

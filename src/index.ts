@@ -9,7 +9,7 @@ interface OptionTypes {
   imageType?: "svg" | "png",
 }
 
-module.exports = ({ markdownAST }: ParsedTypes, pluginOptions?: OptionTypes) => {
+export default function remarkPlantUML({ markdownAST }: ParsedTypes, pluginOptions?: OptionTypes) {
   const imageType = pluginOptions?.imageType
     ? pluginOptions.imageType
     : "svg"
@@ -17,3 +17,5 @@ module.exports = ({ markdownAST }: ParsedTypes, pluginOptions?: OptionTypes) => 
     return `https://www.plantuml.com/plantuml/${imageType}/${encoded}`
   })
 }
+
+module.exports = remarkPlantUML
