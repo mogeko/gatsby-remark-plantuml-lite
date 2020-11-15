@@ -9,22 +9,22 @@
 ## Install
 
 ```
-npm install --save gatsby-remark-plantuml-lite gatsby-transformer-remark
+npm install --save gatsby-remark-plantuml-lite
 ```
 
 or
 
 ```
-yarn add gatsby-remark-plantuml-lite gatsby-transformer-remark
+yarn add gatsby-remark-plantuml-lite
 ```
 
 ## Dependencies
 
 This plugin depends on:
 
-- `gatsby-transformer-remark`
+- `gatsby-transformer-remark` or `gatsby-plugin-mdx`
 
-And it will act as a plugin for `gatsby-transformer-remark`.
+And it will act as a plugin for `gatsby-transformer-remark` / `gatsby-plugin-mdx`.
 
 **This plugin is implemented using pure TypeScript, using the [Web Server API](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000) officially provided by PlantUML, and does not need to depends on Java and Graphviz locally.**
 
@@ -60,6 +60,10 @@ plugins: [
 ]
 // ...
 ```
+
+This example uses `gatsby-transformer-remark`.
+
+If you want to use with `gatsby-plugin-mdx`, please refer to the [Gatsby remark plugins](https://www.gatsbyjs.com/docs/mdx/plugins/#gatsby-remark-plugins) chapter of the official documentation.
 
 ### Options
 
