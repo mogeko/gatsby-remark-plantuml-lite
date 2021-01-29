@@ -47,7 +47,7 @@ plugins: [
         // after the `gatsby-remark-code-titles`.
         // If they exist.
         {
-          resplve: `gatsby-remark-plantuml-lite`,
+          resolve: `gatsby-remark-plantuml-lite`,
           options: { // Configuration options
             imageType: `svg`
           }
@@ -72,7 +72,7 @@ Configure this plugin:
 ```javascript
 // other plugins ...
 {
-  resplve: `gatsby-remark-plantuml-lite`,
+  resolve: `gatsby-remark-plantuml-lite`,
   options: { // Configuration options
     imageType: `svg` // `svg` or `png`, default is `svg`
     server: `https://www.plantuml.com/plantuml`, // Customize PlantUML server
