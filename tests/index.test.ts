@@ -40,6 +40,19 @@ test("测试配置选项 (server)", () => {
   expect(result).toStrictEqual(example)
 })
 
+test("测试配置选项 (server) 自动过滤 url 尾部的 /", () => {
+  const raw = remark().parse(`
+  \`\`\`plantuml
+  @startuml
+  A -> B: Hello / 你好'
+  @enduml
+  \`\`\`
+  `)
+  const example = require("./examples/test.data.4.json")
+  const result = remarkPlantUML({ markdownAST: raw }, { server: "https://example.com/" })
+  expect(result).toStrictEqual(example)
+})
+
 test("测试默认配置选项", () => {
   const raw = remark().parse(`
   \`\`\`plantuml

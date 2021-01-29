@@ -15,7 +15,9 @@ export default function remarkPlantUML({ markdownAST }: ParsedTypes, pluginOptio
     ? pluginOptions.imageType
     : "svg"
   const server = pluginOptions?.server
-    ? pluginOptions.server
+    ? pluginOptions.server.charAt(pluginOptions.server.length - 1) == "/"
+      ? pluginOptions.server.substr(0, pluginOptions.server.length - 1)
+      : pluginOptions.server
     : "https://www.plantuml.com/plantuml"
   return nodeOperator(markdownAST, (encoded) => {
     return `${server}/${imageType}/${encoded}`
