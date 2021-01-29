@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite)
 
 
-**A** light **Gatsby plugin to transform [PlantUML](https://plantuml.com/) code blocks into SVG/PNG images(_without Java and Graphviz_).**
+**A** light **Gatsby plugin to transform [PlantUML][plantuml_home] code blocks into SVG/PNG images(_without Java and Graphviz_).**
 
 ## Install
 
@@ -26,7 +26,7 @@ This plugin depends on:
 
 And it will act as a plugin for `gatsby-transformer-remark` / `gatsby-plugin-mdx`.
 
-**This plugin is implemented using pure TypeScript, using the [Web Server API](http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000) officially provided by PlantUML, and does not need to depends on Java and Graphviz locally.**
+**This plugin is implemented using pure TypeScript, using the [Web Server API][plantuml_server] officially provided by PlantUML (or your own PlantUML server), and does not need to depends on Java and Graphviz locally.**
 
 ## How to use
 
@@ -63,7 +63,7 @@ plugins: [
 
 This example uses `gatsby-transformer-remark`.
 
-If you want to use with `gatsby-plugin-mdx`, please refer to the [Gatsby remark plugins](https://www.gatsbyjs.com/docs/mdx/plugins/#gatsby-remark-plugins) chapter of the official documentation.
+If you want to use with `gatsby-plugin-mdx`, please refer to the [_Gatsby remark plugins_][mdx_gatsby_remark_plugins] chapter of the official documentation.
 
 ### Options
 
@@ -75,6 +75,7 @@ Configure this plugin:
   resplve: `gatsby-remark-plantuml-lite`,
   options: { // Configuration options
     imageType: `svg` // `svg` or `png`, default is `svg`
+    server: `https://www.plantuml.com/plantuml`, // Customize PlantUML server
   }
 },
 // other plugins ...
@@ -82,9 +83,10 @@ Configure this plugin:
 
 Details of configuration options:
 
-| Name        | Values         | Default | Description                                     |
-|:-----------:|:--------------:|:-------:|:-----------------------------------------------:|
-| `imageType` | `svg` or `png` | `svg`   | Type of PlantUML image returned from Web Server |
+|    Name     |     Values     |               Default               |                     Description                      |
+| :---------: | :------------: | :---------------------------------: | :--------------------------------------------------: |
+| `imageType` | `svg` or `png` |                `svg`                |   Type of PlantUML image returned from Web Server.   |
+|  `server`   |  url (string)  | `https://www.plantuml.com/plantuml` | PlantUML server to generate UML diagrams on-the-fly. |
 
 ### Use in Markdown
 
@@ -108,10 +110,19 @@ This plugin will replace PlantUML code blocks with PlantUML image.
 
 like this:
 
-![PlantUML Example](https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9MGw6ARNHryQb66EwGcfS2T300)
+![PlantUML Example][plantuml_example]
 
-More PlantUML syntax can be learned in the [official PlantUML documentation](https://plantuml.com/).
+More PlantUML syntax can be learned in the [official PlantUML documentation](plantuml_home).
 
 ## License
 
-The code in this project is released under the [MIT License](https://github.com/Mogeko/gatsby-remark-plantuml-lite/blob/master/LICENSE).
+The code in this project is released under the [MIT License][license].
+
+
+[plantuml_home]: https://plantuml.com
+[plantuml_server]: http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
+[plantuml_example]: https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9MGw6ARNHryQb66EwGcfS2T300
+
+[mdx_gatsby_remark_plugins]: https://www.gatsbyjs.com/docs/mdx/plugins/#gatsby-remark-plugins
+
+[license]: https://github.com/Mogeko/gatsby-remark-plantuml-lite/blob/master/LICENSE
