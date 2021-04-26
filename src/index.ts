@@ -8,6 +8,7 @@ interface ParsedTypes {
 interface OptionTypes {
   imageType?: "svg" | "png",
   server?: string,
+  codeBlockLang?: string,
 }
 
 export default function remarkPlantUML({ markdownAST }: ParsedTypes, pluginOptions?: OptionTypes) {
@@ -19,9 +20,12 @@ export default function remarkPlantUML({ markdownAST }: ParsedTypes, pluginOptio
       ? pluginOptions.server.substr(0, pluginOptions.server.length - 1)
       : pluginOptions.server
     : "https://www.plantuml.com/plantuml"
+  const codeBlockLang = pluginOptions?.codeBlockLang
+    ? pluginOptions.codeBlockLang
+    : "plantuml";
   return nodeOperator(markdownAST, (encoded) => {
     return `${server}/${imageType}/${encoded}`
-  })
+  }, codeBlockLang)
 }
 
 module.exports = remarkPlantUML
