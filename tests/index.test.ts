@@ -65,3 +65,16 @@ test("测试默认配置选项", () => {
   const result = remarkPlantUML({ markdownAST: raw })
   expect(result).toStrictEqual(example)
 })
+
+test("测试默认配置选项", () => {
+  const raw = remark().parse(`
+  \`\`\`uml
+  @startuml
+  A -> B: Hello / 你好'
+  @enduml
+  \`\`\`
+  `)
+  const example = require("./examples/test.data.5.json")
+  const result = remarkPlantUML({ markdownAST: raw }, { codeBlockLang: "uml" })
+  expect(result).toStrictEqual(example)
+})

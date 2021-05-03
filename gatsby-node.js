@@ -1,5 +1,8 @@
 exports.pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
+    codeBlockLang: Joi.string()
+      .default("plantuml")
+      .description("Name of the codeblock languange."),
     imageType: Joi.string()
       .default("svg")
       .description("Type of PlantUML image returned from Web Server."),
