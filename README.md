@@ -84,10 +84,11 @@ Configure this plugin:
 
 Details of configuration options:
 
-|    Name     |     Values     |               Default               |                     Description                      |
-| :---------: | :------------: | :---------------------------------: | :--------------------------------------------------: |
-| `imageType` | `svg` or `png` |                `svg`                |   Type of PlantUML image returned from Web Server.   |
-|  `server`   |  url (string)  | `https://www.plantuml.com/plantuml` | PlantUML server to generate UML diagrams on-the-fly. |
+|      Name       |     Values     |               Default               |                     Description                      |
+| :-------------: | :------------: | :---------------------------------: | :--------------------------------------------------: |
+|   `imageType`   | `svg` or `png` |                `svg`                |   Type of PlantUML image returned from Web Server.   |
+|     `server`    |  url (string)  | `https://www.plantuml.com/plantuml` | PlantUML server to generate UML diagrams on-the-fly. |
+| `codeBlockLang` |  name (string) |              `plantuml`             |             Name of the codeblock languange.         |
 
 ### Use in Markdown
 
