@@ -12,7 +12,6 @@
   },
   "author": "Mogeko <zhengjunyi@live.com>",
   "license": "MIT",
-  "private": false,
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -47,5 +46,6 @@
   "dependencies": {
     "plantuml-encoder": "^1.4.0",
     "unist-util-flatmap": "^1.0.0"
-  }
+  },
+  "packageManager": "yarn@3.1.0"
 }
