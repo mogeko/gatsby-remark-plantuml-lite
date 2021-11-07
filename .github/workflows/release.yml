@@ -25,13 +25,13 @@ jobs:
       run: yarn install --frozen-lockfile
 
     - name: Publish release @latest
-      run: yarn release --access public
+      run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       if: ${{!contains(github.ref, '-alpha')}}
 
     - name: Publish release @next
-      run: yarn release --access public --tag next
+      run: npm publish --access public --tag next
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       if: ${{contains(github.ref, '-alpha')}}
@@ -47,13 +47,13 @@ jobs:
         scope: '@mogeko'
 
     - name: Publish release @latest
-      run: yarn release
+      run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: ${{!contains(github.ref, '-alpha')}}
 
     - name: Publish release @next
-      run: yarn release --tag next
+      run: npm publish --tag next
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: ${{contains(github.ref, '-alpha')}}
