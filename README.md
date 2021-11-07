@@ -4,7 +4,6 @@
 [![codecov](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite)
 [![npm](https://img.shields.io/npm/v/gatsby-remark-plantuml-lite?logo=npm)](https://www.npmjs.com/package/gatsby-remark-plantuml-lite)
 
-
 **A** light **Gatsby plugin to transform [PlantUML][plantuml_home] code blocks into SVG/PNG images(_without Java and Graphviz_).**
 
 ## Install
@@ -44,21 +43,22 @@ plugins: [
       plugins: [
         `gatsby-remark-code-titles`,
         // Please make sure the order of `gatsby-remark-plantuml-lite`
-        // before the `gatsby-remark-prismjs` and 
+        // before the `gatsby-remark-prismjs` and
         // after the `gatsby-remark-code-titles`.
         // If they exist.
         {
           resolve: `gatsby-remark-plantuml-lite`,
-          options: { // Configuration options
-            imageType: `svg`
-          }
+          options: {
+            // Configuration options
+            imageType: `svg`,
+          },
         },
         `gatsby-remark-prismjs`,
       ],
     },
   },
   // other plugins ...
-]
+];
 // ...
 ```
 
@@ -87,8 +87,8 @@ Details of configuration options:
 |      Name       |     Values     |               Default               |                     Description                      |
 | :-------------: | :------------: | :---------------------------------: | :--------------------------------------------------: |
 |   `imageType`   | `svg` or `png` |                `svg`                |   Type of PlantUML image returned from Web Server.   |
-|     `server`    |  url (string)  | `https://www.plantuml.com/plantuml` | PlantUML server to generate UML diagrams on-the-fly. |
-| `codeBlockLang` |  name (string) |              `plantuml`             |             Name of the codeblock languange.         |
+|    `server`     |  url (string)  | `https://www.plantuml.com/plantuml` | PlantUML server to generate UML diagrams on-the-fly. |
+| `codeBlockLang` | name (string)  |             `plantuml`              |           Name of the codeblock languange.           |
 
 ### Use in Markdown
 
@@ -120,11 +120,8 @@ More PlantUML syntax can be learned in the [official PlantUML documentation](pla
 
 The code in this project is released under the [MIT License][license].
 
-
 [plantuml_home]: https://plantuml.com
 [plantuml_server]: http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
 [plantuml_example]: https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBCoKnELT2rKt3AJx9IS2mjoKZDAybCJYp9pCzJ24ejB4qjBk42oYde0jM05MDHLLoGdrUSoeLkM5u-K5sHGY9MGw6ARNHryQb66EwGcfS2T300
-
 [mdx_gatsby_remark_plugins]: https://www.gatsbyjs.com/docs/mdx/plugins/#gatsby-remark-plugins
-
 [license]: https://github.com/Mogeko/gatsby-remark-plantuml-lite/blob/master/LICENSE

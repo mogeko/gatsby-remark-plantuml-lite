@@ -10,8 +10,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "src/**/*",
-    "dist/**/*.d.ts"
-  ]
+  "include": ["src/**/*", "dist/**/*.d.ts"]
 }

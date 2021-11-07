@@ -1,17 +1,16 @@
-declare module "unist-util-flatmap" {
-
+declare module 'unist-util-flatmap' {
   declare namespace flatMap {
-    type Fn<T, U> =(
+    type Fn<T, U> = (
       node: T,
       index: number | null,
       parent: T | null
-    ) => Array<T | U>
+    ) => Array<T | U>;
   }
 
-  declare function flatMap<T extends object, U extends object> (
+  declare function flatMap<T extends object, U extends object>(
     ast: T,
-    fn: flatMap.Fn<T, U>,
-  ): U
+    fn: flatMap.Fn<T, U>
+  ): U;
 
-  export = flatMap
+  export = flatMap;
 }

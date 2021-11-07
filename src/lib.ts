@@ -1,25 +1,25 @@
-import plantUMLEncoder = require("plantuml-encoder");
-import flatmap = require("unist-util-flatmap");
-import { Code, Paragraph } from "mdast";
+import plantUMLEncoder = require('plantuml-encoder');
+import flatmap = require('unist-util-flatmap');
+import { Code, Paragraph } from 'mdast';
 
 type Fn<T> = (encoded: T) => T;
 
 const nodeOperator = (
   node: Code,
   fn: Fn<string>,
-  codeBlockName: string = "plantuml"
+  codeBlockName: string = 'plantuml'
 ) => {
   return flatmap<Code, Paragraph>(node, (node) => {
-    return node.type === "code" && node.lang === codeBlockName
+    return node.type === 'code' && node.lang === codeBlockName
       ? [
           {
-            type: "paragraph",
+            type: 'paragraph',
             children: [
               {
-                type: "image",
+                type: 'image',
                 title: null,
                 url: fn(plantUMLEncoder.encode(node.value as string)),
-                alt: "PlantUML",
+                alt: 'PlantUML',
                 position: node.position,
               },
             ],
