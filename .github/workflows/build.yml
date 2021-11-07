@@ -26,7 +26,7 @@ jobs:
       run: yarn run build
 
     - name: Run tests
-      run: yarn run coverage
+      run: yarn run cov
 
     - name: Update coverage
       uses: codecov/codecov-action@v1
