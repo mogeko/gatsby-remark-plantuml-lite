@@ -25,7 +25,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist coverage",
-    "release": "npm run build && npm publish",
+    "release": "yarn build && yarn npm publish",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "test": "jest ./tests",
     "cov": "jest --coverage"
