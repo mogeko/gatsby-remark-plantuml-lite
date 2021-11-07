@@ -26,16 +26,6 @@ test('设置返回的图片类型为 PNG', async () => {
 });
 
 test('测试默认情况', async () => {
-  const options = undefined;
-  const { isValid, errors } = await testPluginOptionsSchema(
-    pluginOptionsSchema,
-    options
-  );
-  expect(isValid).toBe(true);
-  expect(errors).toEqual([]);
-});
-
-test('测试默认情况', async () => {
   const options = {
     imageType: undefined,
   };

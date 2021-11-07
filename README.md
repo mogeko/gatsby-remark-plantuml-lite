@@ -8,13 +8,13 @@
 
 ## Install
 
-```
+```shell
 npm install --save gatsby-remark-plantuml-lite
 ```
 
 or
 
-```
+```shell
 yarn add gatsby-remark-plantuml-lite
 ```
 
@@ -96,7 +96,7 @@ Then write PlantUML in the code block of Markdown, and specify the language type
 
 For example:
 
-````
+````txt
 ```plantuml
 @startuml
 Alice -> Bob: Authentication Request
