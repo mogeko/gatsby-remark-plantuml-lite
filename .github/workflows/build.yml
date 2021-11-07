@@ -20,7 +20,7 @@ jobs:
 
   build:
     name: Build
-    need: linter
+    needs: linter
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
