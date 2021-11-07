@@ -1,6 +1,6 @@
 // @ts-nocheck
 import remark = require('remark');
-import nodeOperator from '../dist/lib';
+import nodeOperator from '../src/lib';
 
 const raw = remark().parse(`
   \`\`\`plantuml
