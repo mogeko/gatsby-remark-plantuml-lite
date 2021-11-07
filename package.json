@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-plantuml-lite",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
   "main": "dist/index.js",
   "types": "dist/*.d.ts",
@@ -12,7 +12,6 @@
   },
   "author": "Mogeko <zhengjunyi@live.com>",
   "license": "MIT",
-  "private": false,
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -25,20 +24,58 @@
   ],
   "scripts": {
     "build": "tsc",
+    "clean": "rm -rf dist coverage",
     "release": "npm run build && npm publish",
-    "test": "jest ./tests --watch",
-    "coverage": "jest --coverage"
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "test": "jest ./tests",
+    "cov": "jest --coverage"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   },
   "devDependencies": {
     "@babel/runtime": "^7.12.5",
     "@types/jest": "^26.0.15",
+    "@types/mdast": "^3.0.10",
     "@types/node": "^14.14.7",
     "@types/yargs-parser": "^15.0.0",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "eslint": "^7.13.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "gatsby-plugin-utils": "^0.3.0",
     "jest": "^26.6.3",
+    "prettier": "^2.4.1",
     "remark": "^13.0.0",
     "ts-jest": "^26.4.4",
     "typescript": "^4.0.5"
@@ -46,5 +83,10 @@
   "dependencies": {
     "plantuml-encoder": "^1.4.0",
     "unist-util-flatmap": "^1.0.0"
+  },
+  "packageManager": "yarn@3.1.0",
+  "engines": {
+    "node": ">=14.15.0",
+    "npm": ">=6.14.8"
   }
 }
