@@ -4,7 +4,7 @@ import { Code, Paragraph } from 'mdast';
 
 type Fn<T> = (encoded: T) => T;
 
-type nodeOpt = {
+export type NodeOpt = {
   title?: string | null;
   alt?: string | null;
 };
@@ -13,7 +13,7 @@ const nodeOperator = (
   node: Code,
   fn: Fn<string>,
   codeBlockName: string = 'plantuml',
-  opt: nodeOpt = { title: null, alt: codeBlockName }
+  opt: NodeOpt = { title: null, alt: codeBlockName }
 ) => {
   return flatmap<Code, Paragraph>(node, (node) => {
     return node.type === 'code' && node.lang === codeBlockName
