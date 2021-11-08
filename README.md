@@ -1,8 +1,6 @@
 # gatsby-remark-plantuml-lite
 
-[![Test and Build](https://github.com/Mogeko/gatsby-remark-plantuml-lite/workflows/Test%20and%20Build/badge.svg)](https://github.com/Mogeko/gatsby-remark-plantuml-lite/actions?query=workflow%3A%22Test+and+Build%22)
-[![codecov](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite)
-[![npm](https://img.shields.io/npm/v/gatsby-remark-plantuml-lite?logo=npm)](https://www.npmjs.com/package/gatsby-remark-plantuml-lite)
+[![ci_icon]][ci_link] [![codecov_icon]][codecov_link] [![npm_icon]][npm_link]
 
 **A** light **Gatsby plugin to transform [PlantUML][plantuml_home] code blocks into SVG/PNG images(_without Java and Graphviz_).**
 
@@ -88,9 +86,9 @@ Details of configuration options:
 | :-------------: | :------------: | :---------------------------------: | :-----------------------------------------------------------: |
 |   `imageType`   | `svg` or `png` |                `svg`                |       Type of PlantUML image returned from Web Server.        |
 |    `server`     |  url (string)  | `https://www.plantuml.com/plantuml` |     PlantUML server to generate UML diagrams on-the-fly.      |
-| `codeBlockLang` | name (string)  |             `plantuml`              |               Name of the codeblock languange.                |
+| `codeBlockLang` |     string     |             `plantuml`              |               Name of the codeblock languange.                |
 |     `title`     | string or null |               `null`                | Specifies the title property of the generated PlantUML image. |
-|      `alt`      |     string     |      Same with `codeblocklang`      |  Specifies the alt property of the generated PlantUML image.  |
+|      `alt`      |     string     |    Same with `codeblocklang`[^1]    |  Specifies the alt property of the generated PlantUML image.  |
 
 ### Use in Markdown
 
@@ -121,6 +119,21 @@ More PlantUML syntax can be learned in the [official PlantUML documentation](pla
 ## License
 
 The code in this project is released under the [MIT License][license].
+
+<!-- footnote -->
+
+[^1]: By default, the value of the `alt` is bound to `codeblocklang`; for example, set `codeblocklang = 'uml'` will cause `alt = 'uml'`
+
+<!-- badge -->
+
+[ci_icon]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/build.yml/badge.svg
+[ci_link]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/build.yml
+[codecov_icon]: https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg
+[codecov_link]: https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite
+[npm_icon]: https://img.shields.io/npm/v/gatsby-remark-plantuml-lite?logo=npm
+[npm_link]: https://www.npmjs.com/package/gatsby-remark-plantuml-lite
+
+<!-- links -->
 
 [plantuml_home]: https://plantuml.com
 [plantuml_server]: http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
