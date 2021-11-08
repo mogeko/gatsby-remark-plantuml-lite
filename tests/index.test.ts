@@ -1,6 +1,5 @@
-// @ts-nocheck
 import { Image, Paragraph, Root } from 'mdast';
-import remark = require('remark');
+import fromMarkdown = require('mdast-util-from-markdown');
 import remarkPlantUML from '../src/index';
 
 describe('基础测试', () => {
@@ -10,12 +9,12 @@ describe('基础测试', () => {
 
   beforeAll(() => {
     resAst = remarkPlantUML({
-      markdownAST: remark().parse(
+      markdownAST: fromMarkdown(
         `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
       ),
     });
-    paragraph = resAst.children[0];
-    image = paragraph.children[0];
+    paragraph = resAst.children[0] as Paragraph;
+    image = paragraph.children[0] as Image;
   });
 
   test('测试 Wrap (Paragraph) 的类型', () => {
@@ -51,14 +50,14 @@ describe('测试配置选项', () => {
   beforeAll(() => {
     mdAst = remarkPlantUML(
       {
-        markdownAST: remark().parse(
+        markdownAST: fromMarkdown(
           `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
         ),
       },
       { imageType: 'png', server: 'https://example.com/' }
     );
-    paragraph = mdAst.children[0];
-    image = paragraph.children[0];
+    paragraph = mdAst.children[0] as Paragraph;
+    image = paragraph.children[0] as Image;
   });
 
   test('测试选项 imageType', () => {
@@ -71,15 +70,15 @@ describe('测试配置选项', () => {
 });
 
 test('测试自定义 codeBlockLang', () => {
-  const raw = remark().parse(
+  const raw = fromMarkdown(
     `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
   );
   const mdAst: Root = remarkPlantUML(
     { markdownAST: raw },
     { codeBlockLang: 'uml' }
   );
-  const paragraph: Paragraph = mdAst.children[0];
-  const image: Image = paragraph.children[0];
+  const paragraph = mdAst.children[0] as Paragraph;
+  const image = paragraph.children[0] as Image;
   expect(image.url).toMatch(
     /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
   );

@@ -1,6 +1,5 @@
-// @ts-nocheck
-import { Image, Paragraph, Root } from 'mdast';
-import remark = require('remark');
+import { Root, Paragraph, Image } from 'mdast';
+import fromMarkdown = require('mdast-util-from-markdown');
 import nodeOperator from '../src/lib';
 
 describe('基础测试', () => {
@@ -10,15 +9,15 @@ describe('基础测试', () => {
 
   beforeAll(() => {
     resAst = nodeOperator(
-      remark().parse(
+      fromMarkdown(
         `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
       ),
       (encoded) => {
         return `https://www.plantuml.com/plantuml/svg/${encoded}`;
       }
     );
-    paragraph = resAst.children[0];
-    image = paragraph.children[0];
+    paragraph = resAst.children[0] as Paragraph;
+    image = paragraph.children[0] as Image;
   });
 
   test('测试 Wrap (Paragraph) 的类型', () => {
@@ -53,7 +52,7 @@ describe('测试选项', () => {
 
   beforeAll(() => {
     resAst = nodeOperator(
-      remark().parse(
+      fromMarkdown(
         `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
       ),
       (encoded) => {
@@ -62,8 +61,8 @@ describe('测试选项', () => {
       'plantuml',
       { title: 'exampleTitle', alt: 'exampleAlt' }
     );
-    paragraph = resAst.children[0];
-    image = paragraph.children[0];
+    paragraph = resAst.children[0] as Paragraph;
+    image = paragraph.children[0] as Image;
   });
 
   test('测试选项 title', () => {
@@ -79,7 +78,7 @@ describe('测试选项', () => {
 
 test('测试自定义 codeBlockName', () => {
   const resAst: Root = nodeOperator(
-    remark().parse(
+    fromMarkdown(
       `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
@@ -87,14 +86,14 @@ test('测试自定义 codeBlockName', () => {
     },
     'uml'
   );
-  const paragraph: Paragraph = resAst.children[0];
-  const image: Image = paragraph.children[0];
+  const paragraph = resAst.children[0] as Paragraph;
+  const image = paragraph.children[0] as Image;
   expect(image.alt).toEqual('uml');
 });
 
 test('测试能否正确编码', () => {
   nodeOperator(
-    remark().parse(
+    fromMarkdown(
       `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
@@ -108,7 +107,7 @@ test('测试能否正确编码', () => {
 
 test('测试选项 only an title', () => {
   const resAst: Root = nodeOperator(
-    remark().parse(
+    fromMarkdown(
       `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
@@ -117,8 +116,8 @@ test('测试选项 only an title', () => {
     'plantuml',
     { title: 'exampleTitle' }
   );
-  const paragraph: Paragraph = resAst.children[0];
-  const image: Image = paragraph.children[0];
+  const paragraph = resAst.children[0] as Paragraph;
+  const image = paragraph.children[0] as Image;
   expect(image.title).not.toBeNull();
   expect(image.alt).not.toBeUndefined();
   expect(image.title).toEqual('exampleTitle');

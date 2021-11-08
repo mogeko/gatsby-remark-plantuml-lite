@@ -1,8 +1,8 @@
 import nodeOperator, { NodeOpt } from './lib';
-import { Code, Paragraph } from 'mdast';
+import { Root } from 'mdast';
 
 interface ParsedTypes {
-  markdownAST: Code;
+  markdownAST: Root;
 }
 
 interface OptionTypes extends NodeOpt {
@@ -14,7 +14,7 @@ interface OptionTypes extends NodeOpt {
 export default function remarkPlantUML(
   { markdownAST }: ParsedTypes,
   pluginOptions?: OptionTypes
-): Paragraph {
+): Root {
   const imageType = pluginOptions?.imageType ? pluginOptions.imageType : 'svg';
   const server = pluginOptions?.server
     ? pluginOptions.server.charAt(pluginOptions.server.length - 1) == '/'

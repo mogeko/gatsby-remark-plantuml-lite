@@ -1,6 +1,6 @@
 import plantUMLEncoder = require('plantuml-encoder');
 import flatmap = require('unist-util-flatmap');
-import { Code, Paragraph } from 'mdast';
+import { Code, Paragraph, Root } from 'mdast';
 
 type Fn<T> = (encoded: T) => T;
 
@@ -10,7 +10,7 @@ export type NodeOpt = {
 };
 
 const nodeOperator = (
-  node: Code,
+  node: Root,
   fn: Fn<string>,
   codeBlockName: string = 'plantuml',
   opt: NodeOpt = { title: null, alt: codeBlockName }
