@@ -1,87 +1,86 @@
 // @ts-nocheck
+import { Image, Paragraph, Root } from 'mdast';
 import remark = require('remark');
 import remarkPlantUML from '../src/index';
 
-test('基础测试', () => {
-  const raw = remark().parse(`
-  \`\`\`plantuml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `);
-  const example = require('./examples/test.data.0.json');
-  const result = remarkPlantUML({ markdownAST: raw }, { imageType: 'svg' });
-  expect(result).toStrictEqual(example);
+describe('基础测试', () => {
+  let resAst: Root;
+  let paragraph: Paragraph;
+  let image: Image;
+
+  beforeAll(() => {
+    resAst = remarkPlantUML({
+      markdownAST: remark().parse(
+        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
+      ),
+    });
+    paragraph = resAst.children[0];
+    image = paragraph.children[0];
+  });
+
+  test('测试 Wrap (Paragraph) 的类型', () => {
+    expect(paragraph.type).toEqual('paragraph');
+  });
+
+  test('测试 Image 的类型', () => {
+    expect(image.type).toEqual('image');
+  });
+
+  test('测试 Image 的 Alt', () => {
+    expect(image.alt).toEqual('PlantUML');
+  });
+
+  test('测试 Image 的 Title', () => {
+    expect(image.title).toEqual(null);
+  });
+
+  test('测试 Image 的 Url', () => {
+    expect(image.url).toMatch(/https:\/\/www.plantuml.com/);
+    expect(image.url).toMatch(/svg/);
+    expect(image.url).toMatch(
+      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
+    );
+  });
 });
 
-test('测试配置选项 (imageType)', () => {
-  const raw = remark().parse(`
-  \`\`\`plantuml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `);
-  const example = require('./examples/test.data.3.json');
-  const result = remarkPlantUML({ markdownAST: raw }, { imageType: 'png' });
-  expect(result).toStrictEqual(example);
+describe('测试配置选项', () => {
+  let mdAst: Root;
+  let paragraph: Paragraph;
+  let image: Image;
+
+  beforeAll(() => {
+    mdAst = remarkPlantUML(
+      {
+        markdownAST: remark().parse(
+          `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
+        ),
+      },
+      { imageType: 'png', server: 'https://example.com/' }
+    );
+    paragraph = mdAst.children[0];
+    image = paragraph.children[0];
+  });
+
+  test('测试选项 imageType', () => {
+    expect(image.url).toMatch(/png/);
+  });
+
+  test('测试选项 server', () => {
+    expect(image.url).toMatch(/https:\/\/example.com/);
+  });
 });
 
-test('测试配置选项 (server)', () => {
-  const raw = remark().parse(`
-  \`\`\`plantuml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `);
-  const example = require('./examples/test.data.4.json');
-  const result = remarkPlantUML(
-    { markdownAST: raw },
-    { server: 'https://example.com' }
+test('测试自定义 codeBlockLang', () => {
+  const raw = remark().parse(
+    `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
   );
-  expect(result).toStrictEqual(example);
-});
-
-test('测试配置选项 (server) 自动过滤 url 尾部的 /', () => {
-  const raw = remark().parse(`
-  \`\`\`plantuml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `);
-  const example = require('./examples/test.data.4.json');
-  const result = remarkPlantUML(
+  const mdAst: Root = remarkPlantUML(
     { markdownAST: raw },
-    { server: 'https://example.com/' }
+    { codeBlockLang: 'uml' }
   );
-  expect(result).toStrictEqual(example);
-});
-
-test('测试默认配置选项', () => {
-  const raw = remark().parse(`
-  \`\`\`plantuml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `);
-  const example = require('./examples/test.data.0.json');
-  const result = remarkPlantUML({ markdownAST: raw });
-  expect(result).toStrictEqual(example);
-});
-
-test('测试默认配置选项', () => {
-  const raw = remark().parse(`
-  \`\`\`uml
-  @startuml
-  A -> B: Hello / 你好'
-  @enduml
-  \`\`\`
-  `);
-  const example = require('./examples/test.data.5.json');
-  const result = remarkPlantUML({ markdownAST: raw }, { codeBlockLang: 'uml' });
-  expect(result).toStrictEqual(example);
+  const paragraph: Paragraph = mdAst.children[0];
+  const image: Image = paragraph.children[0];
+  expect(image.url).toMatch(
+    /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
+  );
 });
