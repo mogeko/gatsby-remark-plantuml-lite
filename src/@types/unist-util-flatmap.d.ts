@@ -1,4 +1,6 @@
 declare module 'unist-util-flatmap' {
+  import { Root } from 'mdast';
+
   declare namespace flatMap {
     type Fn<T, U> = (
       node: T,
@@ -8,9 +10,9 @@ declare module 'unist-util-flatmap' {
   }
 
   declare function flatMap<T extends object, U extends object>(
-    ast: T,
+    ast: T | Root,
     fn: flatMap.Fn<T, U>
-  ): U;
+  ): Root;
 
   export = flatMap;
 }
