@@ -27,7 +27,7 @@ describe('基础测试', () => {
   });
 
   test('测试 Image 的 Alt', () => {
-    expect(image.alt).toEqual('PlantUML');
+    expect(image.alt).toEqual('plantuml');
   });
 
   test('测试 Image 的 Title', () => {

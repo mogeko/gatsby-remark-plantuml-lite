@@ -1,11 +1,11 @@
-import nodeOperator from './lib';
+import nodeOperator, { NodeOpt } from './lib';
 import { Code, Paragraph } from 'mdast';
 
 interface ParsedTypes {
   markdownAST: Code;
 }
 
-interface OptionTypes {
+interface OptionTypes extends NodeOpt {
   imageType?: 'svg' | 'png';
   server?: string;
   codeBlockLang?: string;
@@ -29,7 +29,8 @@ export default function remarkPlantUML(
     (encoded) => {
       return `${server}/${imageType}/${encoded}`;
     },
-    codeBlockLang
+    codeBlockLang,
+    { title: pluginOptions?.title, alt: pluginOptions?.alt }
   );
 }
 

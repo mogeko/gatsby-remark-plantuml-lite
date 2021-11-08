@@ -4,10 +4,16 @@ import { Code, Paragraph } from 'mdast';
 
 type Fn<T> = (encoded: T) => T;
 
+export type NodeOpt = {
+  title?: string | null;
+  alt?: string | null;
+};
+
 const nodeOperator = (
   node: Code,
   fn: Fn<string>,
-  codeBlockName: string = 'plantuml'
+  codeBlockName: string = 'plantuml',
+  opt: NodeOpt = { title: null, alt: codeBlockName }
 ) => {
   return flatmap<Code, Paragraph>(node, (node) => {
     return node.type === 'code' && node.lang === codeBlockName
@@ -17,9 +23,9 @@ const nodeOperator = (
             children: [
               {
                 type: 'image',
-                title: null,
+                title: opt.title ? opt.title : null,
                 url: fn(plantUMLEncoder.encode(node.value as string)),
-                alt: 'PlantUML',
+                alt: opt.alt ? opt.alt : codeBlockName,
                 position: node.position,
               },
             ],

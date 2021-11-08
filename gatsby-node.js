@@ -9,5 +9,15 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     server: Joi.string()
       .default('https://www.plantuml.com/plantuml')
       .description('PlantUML server to generate UML diagrams on-the-fly.'),
+    title: Joi.string()
+      .default(null)
+      .description(
+        'Specifies the title property of the generated PlantUML image.'
+      ),
+    alt: Joi.string()
+      .default('plantuml')
+      .description(
+        'Specifies the alt property of the generated PlantUML image.'
+      ),
   });
 };
