@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-plantuml-lite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
   "main": "dist/index.js",
   "types": "dist/*.d.ts",
