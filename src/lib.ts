@@ -27,6 +27,7 @@ const nodeOperator = (
                 position: node.position,
               },
             ],
+            position: node.position,
           },
         ]
       : // do nothing
