@@ -34,7 +34,7 @@ describe('基础测试', () => {
   });
 
   test('测试 Image 的 Url', () => {
-    expect(image.url).toMatch(/https:\/\/www.plantuml.com/);
+    expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
       /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
