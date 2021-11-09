@@ -15,15 +15,13 @@ export default function remarkPlantUML(
   { markdownAST }: ParsedTypes,
   pluginOptions?: OptionTypes
 ): Root {
-  const imageType = pluginOptions?.imageType ? pluginOptions.imageType : 'svg';
+  const imageType = pluginOptions?.imageType ?? 'svg';
   const server = pluginOptions?.server
     ? pluginOptions.server.charAt(pluginOptions.server.length - 1) == '/'
       ? pluginOptions.server.substr(0, pluginOptions.server.length - 1)
       : pluginOptions.server
     : 'https://www.plantuml.com/plantuml';
-  const codeBlockLang = pluginOptions?.codeBlockLang
-    ? pluginOptions.codeBlockLang
-    : 'plantuml';
+  const codeBlockLang = pluginOptions?.codeBlockLang ?? 'plantuml';
   return nodeOperator(
     markdownAST,
     (encoded) => {

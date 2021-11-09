@@ -10,12 +10,12 @@ export type NodeOpt = {
 };
 
 const nodeOperator = (
-  node: Root,
+  tree: Root,
   fn: Fn<string>,
   codeBlockName: string = 'plantuml',
   opt: NodeOpt = { title: null, alt: codeBlockName }
 ) => {
-  return flatmap<Code, Paragraph>(node, (node) => {
+  return flatmap<Code, Paragraph>(tree, (node) => {
     return node.type === 'code' && node.lang === codeBlockName
       ? [
           {
@@ -23,9 +23,9 @@ const nodeOperator = (
             children: [
               {
                 type: 'image',
-                title: opt.title ? opt.title : null,
+                title: opt.title ?? null,
                 url: fn(plantUMLEncoder.encode(node.value as string)),
-                alt: opt.alt ? opt.alt : codeBlockName,
+                alt: opt.alt ?? codeBlockName,
                 position: node.position,
               },
             ],
