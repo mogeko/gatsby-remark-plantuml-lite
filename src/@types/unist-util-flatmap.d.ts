@@ -1,18 +1,15 @@
 declare module 'unist-util-flatmap' {
-  import { Root, parent } from 'mdast';
-
+  import { Content, Parent, Root } from 'mdast';
   declare namespace flatMap {
-    type Fn<T, U> = (
+    type Fn<T extends Content> = (
       node: T,
       index: number,
-      parent: parent | null
-    ) => Array<T | U>;
+      parent: Parent | null
+    ) => Content[];
   }
-
-  declare function flatMap<T extends object, U extends object>(
-    ast: T | Root,
-    fn: flatMap.Fn<T, U>
+  declare function flatMap<T extends Content>(
+    ast: Root,
+    fn: flatMap.Fn<T>
   ): Root;
-
   export = flatMap;
 }
