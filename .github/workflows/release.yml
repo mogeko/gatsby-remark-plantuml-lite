@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup registry url with NPM
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.1.0
       with:
         registry-url: https://registry.npmjs.org
         node-version: 16
@@ -42,7 +42,7 @@ jobs:
       run: 'sed -i "s/\"name\": \"/\"name\": \"@mogeko\//g" package.json'
 
     - name: Setup registry url with GitHub Packages
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.1.0
       with:
         registry-url: https://npm.pkg.github.com
         node-version: 16
