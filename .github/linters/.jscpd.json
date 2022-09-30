@@ -1,6 +1,0 @@
-{
-  "threshold": 0,
-  "reporters": ["consoleFull"],
-  "ignore": ["**/__snapshots__/**", "**/.yarn/**", "**/tests/lib.test.ts"],
-  "absolute": true
-}
