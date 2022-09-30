@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-    - '*'
+      - '*'
 
 jobs:
   release:
@@ -11,51 +11,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup registry url with NPM
-      uses: actions/setup-node@v3.5.0
-      with:
-        registry-url: https://registry.npmjs.org
-        node-version: 16
-
-    - name: Install dependencies
-      run: yarn install --immutable
-
-    - name: Run build
-      run: yarn run build
-
-    - name: Publish release @latest
-      run: npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      if: ${{!contains(github.ref, '-alpha')}}
-
-    - name: Publish release @next
-      run: npm publish --access public --tag next
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      if: ${{contains(github.ref, '-alpha')}}
-
-    - name: Rename before Publish to GitHub Packages
-      run: 'sed -i "s/\"name\": \"/\"name\": \"@mogeko\//g" package.json'
-
-    - name: Setup registry url with GitHub Packages
-      uses: actions/setup-node@v3.5.0
-      with:
-        registry-url: https://npm.pkg.github.com
-        node-version: 16
-        scope: '@mogeko'
-
-    - name: Publish release @latest
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: ${{!contains(github.ref, '-alpha')}}
-
-    - name: Publish release @next
-      run: npm publish --tag next
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: ${{contains(github.ref, '-alpha')}}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup registry url with NPM
+        uses: actions/setup-node@v3.5.0
+        with:
+          registry-url: https://registry.npmjs.org
+          node-version: 16
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Run build
+        run: yarn run build
+      - name: Publish release @latest
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: ${{!contains(github.ref, '-alpha')}}
+      - name: Publish release @next
+        run: npm publish --access public --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: ${{contains(github.ref, '-alpha')}}
+      - name: Rename before Publish to GitHub Packages
+        run: 'sed -i "s/\"name\": \"/\"name\": \"@mogeko\//g" package.json'
+      - name: Setup registry url with GitHub Packages
+        uses: actions/setup-node@v3.5.0
+        with:
+          registry-url: https://npm.pkg.github.com
+          node-version: 16
+          scope: '@mogeko'
+      - name: Publish release @latest
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{!contains(github.ref, '-alpha')}}
+      - name: Publish release @next
+        run: npm publish --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{contains(github.ref, '-alpha')}}
