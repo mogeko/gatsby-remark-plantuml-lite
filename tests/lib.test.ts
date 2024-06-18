@@ -1,8 +1,9 @@
-import { Root, Paragraph, Image } from 'mdast';
-import fromMarkdown = require('mdast-util-from-markdown');
-import nodeOperator from '../src/lib';
+import { describe, beforeAll, it, expect } from "vitest";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { nodeOperator } from "@/lib";
+import type { Root, Paragraph, Image } from "mdast";
 
-describe('基础测试', () => {
+describe("基础测试", () => {
   let resAst: Root;
   let paragraph: Paragraph;
   let image: Image;
@@ -20,32 +21,32 @@ describe('基础测试', () => {
     image = paragraph.children[0] as Image;
   });
 
-  test('测试 Wrap (Paragraph) 的类型', () => {
-    expect(paragraph.type).toEqual('paragraph');
+  it("测试 Wrap (Paragraph) 的类型", () => {
+    expect(paragraph.type).toEqual("paragraph");
   });
 
-  test('测试 Image 的类型', () => {
-    expect(image.type).toEqual('image');
+  it("测试 Image 的类型", () => {
+    expect(image.type).toEqual("image");
   });
 
-  test('测试 Image 的 Alt', () => {
-    expect(image.alt).toEqual('plantuml');
+  it("测试 Image 的 Alt", () => {
+    expect(image.alt).toEqual("plantuml");
   });
 
-  test('测试 Image 的 Title', () => {
+  it("测试 Image 的 Title", () => {
     expect(image.title).toEqual(null);
   });
 
-  test('测试 Image 的 Url', () => {
+  it("测试 Image 的 Url", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
-      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
+      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/
     );
   });
 });
 
-describe('测试选项', () => {
+describe("测试选项", () => {
   let resAst: Root;
   let paragraph: Paragraph;
   let image: Image;
@@ -58,25 +59,25 @@ describe('测试选项', () => {
       (encoded) => {
         return `https://www.plantuml.com/plantuml/svg/${encoded}`;
       },
-      'plantuml',
-      { title: 'exampleTitle', alt: 'exampleAlt' }
+      "plantuml",
+      { title: "exampleTitle", alt: "exampleAlt" }
     );
     paragraph = resAst.children[0] as Paragraph;
     image = paragraph.children[0] as Image;
   });
 
-  test('测试选项 title', () => {
+  it("测试选项 title", () => {
     expect(image.title).not.toBeNull;
-    expect(image.title).toEqual('exampleTitle');
+    expect(image.title).toEqual("exampleTitle");
   });
 
-  test('测试选项 alt', () => {
-    expect(image.alt).not.toEqual('plantuml');
-    expect(image.alt).toEqual('exampleAlt');
+  it("测试选项 alt", () => {
+    expect(image.alt).not.toEqual("plantuml");
+    expect(image.alt).toEqual("exampleAlt");
   });
 });
 
-test('测试自定义 codeBlockName', () => {
+it("测试自定义 codeBlockName", () => {
   const resAst: Root = nodeOperator(
     fromMarkdown(
       `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
@@ -84,28 +85,28 @@ test('测试自定义 codeBlockName', () => {
     (encoded) => {
       return `https://www.plantuml.com/plantuml/svg/${encoded}`;
     },
-    'uml'
+    "uml"
   );
   const paragraph = resAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;
-  expect(image.alt).toEqual('uml');
+  expect(image.alt).toEqual("uml");
 });
 
-test('测试能否正确编码', () => {
+it("测试能否正确编码", () => {
   nodeOperator(
     fromMarkdown(
       `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
       expect(encoded).toStrictEqual(
-        'SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80'
+        "SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000"
       );
       return encoded;
     }
   );
 });
 
-test('测试选项 only an title', () => {
+it("测试选项 only an title", () => {
   const resAst: Root = nodeOperator(
     fromMarkdown(
       `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
@@ -113,13 +114,13 @@ test('测试选项 only an title', () => {
     (encoded) => {
       return `https://www.plantuml.com/plantuml/svg/${encoded}`;
     },
-    'plantuml',
-    { title: 'exampleTitle' }
+    "plantuml",
+    { title: "exampleTitle" }
   );
   const paragraph = resAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;
   expect(image.title).not.toBeNull();
   expect(image.alt).not.toBeUndefined();
-  expect(image.title).toEqual('exampleTitle');
-  expect(image.alt).toEqual('plantuml');
+  expect(image.title).toEqual("exampleTitle");
+  expect(image.alt).toEqual("plantuml");
 });

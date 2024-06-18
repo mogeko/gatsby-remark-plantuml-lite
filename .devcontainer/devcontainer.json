@@ -1,35 +1,51 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.205.1/containers/typescript-node
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
-  "name": "Node.js & TypeScript",
-  "build": {
-    "dockerfile": "Dockerfile",
-    // Update 'VARIANT' to pick a Node version: 16, 14, 12.
-    // Append -bullseye or -buster to pin to an OS version.
-    // Use -bullseye variants on local on arm64/Apple Silicon.
-    "args": {
-      "VARIANT": "16-bullseye"
+  "name": "Node.js",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {
+        "search.exclude": {
+          "**/.yarn": true,
+          "**/.pnp.*": true
+        },
+        "editor.tabSize": 2,
+        "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+        "typescript.tsdk": ".yarn/sdks/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "arcanis.vscode-zipfs",
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions"
+      ]
     }
   },
 
-  // Set *default* container specific settings.json values on container create.
-  "settings": {
-    "editor.tabSize": 2
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [3000],
+
+  // Use 'portsAttributes' to set default properties for specific forwarded ports.
+  // More info: https://containers.dev/implementors/json_reference/#port-attributes
+  "portsAttributes": {
+    "3000": {
+      "label": "Hello Remote World",
+      "onAutoForward": "notify"
+    }
   },
 
-  // Add the IDs of extensions you want installed when the container is created.
-  "extensions": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "github.vscode-pull-request-github"
-  ],
-
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
-
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "yarn install",
+  "postCreateCommand": "yarn install"
 
-  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "node"
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }

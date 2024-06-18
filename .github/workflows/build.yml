@@ -1,29 +1,20 @@
-name: Test and Build
+name: Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node: [14, 16]
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node.js
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
         uses: actions/setup-node@v3.5.0
         with:
-          node-version: ${{ matrix.node }}
-      - name: Install dependencies
-        run: yarn install --immutable
-      - name: Run tests
-        run: yarn run cov
-      - name: Run build
-        run: yarn run build
-      - name: Update coverage
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
+          node-version-file: package.json
+      - run: yarn install --immutable
+      - run: yarn run build

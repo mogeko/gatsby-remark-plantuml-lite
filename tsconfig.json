@@ -1,14 +1,16 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "declaration": true,
-    "outDir": "./dist",
-    "strict": true,
-    "baseUrl": "./",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": { "@/*": ["src/*"] },
+    "baseUrl": ".",
+    "allowJs": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true
   },
-  "include": ["src/**/*", "dist/**/*.d.ts"]
+  "include": ["src", "tests", "*.config.ts"],
+  "exclude": ["node_modules"]
 }

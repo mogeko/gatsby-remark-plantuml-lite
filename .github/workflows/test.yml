@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  push:
+    branches-ignore: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.5.0
+        with:
+          node-version-file: package.json
+      - run: yarn install --immutable
+      - run: yarn run cov
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true

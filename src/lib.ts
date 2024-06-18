@@ -1,26 +1,21 @@
-import plantUMLEncoder = require('plantuml-encoder');
-import flatmap = require('unist-util-flatmap');
-import { Code, Content, Root } from 'mdast';
+import plantUMLEncoder from "plantuml-encoder";
+import flatmap from "unist-util-flatmap";
+import type { Code, RootContent, Root } from "mdast";
 
-export type NodeOpt = {
-  title?: string | null;
-  alt?: string | null;
-};
-
-const nodeOperator = (
+export const nodeOperator = (
   tree: Root,
   fn: (encoded: string) => string,
-  codeBlockName: string = 'plantuml',
-  opt: NodeOpt = { title: null, alt: codeBlockName }
+  codeBlockName: string = "plantuml",
+  opt: NodeOpt = { title: null, alt: codeBlockName },
 ): Root => {
-  return flatmap<Code>(tree, (node: Code): Content[] => {
-    return node.type === 'code' && node.lang === codeBlockName
+  return flatmap<Code>(tree, (node: Code): RootContent[] => {
+    return node.type === "code" && node.lang === codeBlockName
       ? [
           {
-            type: 'paragraph',
+            type: "paragraph",
             children: [
               {
-                type: 'image',
+                type: "image",
                 title: opt.title ?? null,
                 url: fn(plantUMLEncoder.encode(node.value as string)),
                 alt: opt.alt ?? codeBlockName,
@@ -35,4 +30,7 @@ const nodeOperator = (
   });
 };
 
-export default nodeOperator;
+export type NodeOpt = {
+  title?: string | null;
+  alt?: string | null;
+};
