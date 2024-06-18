@@ -1,9 +1,25 @@
+# Basic dependabot.yml file with
+# minimum configuration for two package managers
+
 version: 2
 updates:
-  # Maintain dependencies for GitHub Actions
+  # Enable version updates for Yarn
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      devDependencies:
+        dependency-type: "development"
+      dependencies:
+        dependency-type: "production"
+  # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
-
-  # Deprondabot does not support Yarn2 yet.
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns: ["*"]

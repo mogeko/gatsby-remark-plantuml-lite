@@ -1,0 +1,18 @@
+queue_rules:
+  - name: dependabot
+    queue_conditions:
+      - "check-success=build"
+      - "check-success=test"
+    batch_size: 10
+    batch_max_wait_time: 5min
+
+pull_request_rules:
+  - name: Automatic merge from dependabot
+    conditions:
+      - "author=dependabot[bot]"
+      - "label=dependencies"
+      - "check-success=build"
+      - "check-success=test"
+    actions:
+      queue:
+        name: dependabot
