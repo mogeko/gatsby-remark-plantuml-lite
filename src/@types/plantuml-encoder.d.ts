@@ -1,4 +1,4 @@
-declare module 'plantuml-encoder' {
+declare module "plantuml-encoder" {
   export = {
     encode,
     decode,

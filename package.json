@@ -31,10 +31,6 @@
     "test": "jest ./tests",
     "cov": "jest --coverage"
   },
-  "prettier": {
-    "singleQuote": true,
-    "tabWidth": 2
-  },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"

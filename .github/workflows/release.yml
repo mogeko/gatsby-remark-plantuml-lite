@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   release:
@@ -39,7 +39,7 @@ jobs:
         with:
           registry-url: https://npm.pkg.github.com
           node-version: 16
-          scope: '@mogeko'
+          scope: "@mogeko"
       - name: Publish release @latest
         run: npm publish
         env:

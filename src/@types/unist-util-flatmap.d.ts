@@ -1,5 +1,5 @@
-declare module 'unist-util-flatmap' {
-  import { Content, Parent, Root } from 'mdast';
+declare module "unist-util-flatmap" {
+  import { Content, Parent, Root } from "mdast";
   declare namespace flatMap {
     type Fn<T extends Content> = (
       node: T,
