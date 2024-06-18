@@ -1,15 +1,5 @@
-import nodeOperator, { NodeOpt } from "./lib";
-import { Root } from "mdast";
-
-type ParsedTypes = {
-  markdownAST: Root;
-};
-
-type OptionTypes = {
-  imageType?: "svg" | "png";
-  server?: string;
-  codeBlockLang?: string;
-} & NodeOpt;
+import { nodeOperator, type NodeOpt } from "@/lib";
+import type { Root } from "mdast";
 
 export default function remarkPlantUML(
   { markdownAST }: ParsedTypes,
@@ -32,4 +22,12 @@ export default function remarkPlantUML(
   );
 }
 
-module.exports = remarkPlantUML;
+type ParsedTypes = {
+  markdownAST: Root;
+};
+
+type OptionTypes = {
+  imageType?: "svg" | "png";
+  server?: string;
+  codeBlockLang?: string;
+} & NodeOpt;

@@ -1,13 +1,8 @@
-import plantUMLEncoder = require("plantuml-encoder");
-import flatmap = require("unist-util-flatmap");
-import { Code, Content, Root } from "mdast";
+import plantUMLEncoder from "plantuml-encoder";
+import flatmap from "unist-util-flatmap";
+import type { Code, Content, Root } from "mdast";
 
-export type NodeOpt = {
-  title?: string | null;
-  alt?: string | null;
-};
-
-const nodeOperator = (
+export const nodeOperator = (
   tree: Root,
   fn: (encoded: string) => string,
   codeBlockName: string = "plantuml",
@@ -35,4 +30,7 @@ const nodeOperator = (
   });
 };
 
-export default nodeOperator;
+export type NodeOpt = {
+  title?: string | null;
+  alt?: string | null;
+};
