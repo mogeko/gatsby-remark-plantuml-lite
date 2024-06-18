@@ -1,3 +1,4 @@
 .yarn/
 coverage/
 dist/
+.pnp.*

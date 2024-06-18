@@ -13,7 +13,14 @@
     // Configure properties specific to VS Code.
     "vscode": {
       "settings": {
-        "editor.tabSize": 2
+        "search.exclude": {
+          "**/.yarn": true,
+          "**/.pnp.*": true
+        },
+        "editor.tabSize": 2,
+        "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+        "typescript.tsdk": ".yarn/sdks/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
       },
       "extensions": [
         "esbenp.prettier-vscode",
