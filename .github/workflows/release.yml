@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup registry url with NPM
-        uses: actions/setup-node@v3.5.0
+        uses: actions/setup-node@v4.0.2
         with:
           registry-url: https://registry.npmjs.org
           node-version-file: package.json
@@ -32,7 +32,7 @@ jobs:
       - name: Rename before Publish to GitHub Packages
         run: 'sed -i "s/\"name\": \"/\"name\": \"@mogeko\//g" package.json'
       - name: Setup registry url with GitHub Packages
-        uses: actions/setup-node@v3.5.0
+        uses: actions/setup-node@v4.0.2
         with:
           registry-url: https://npm.pkg.github.com
           node-version: 16
