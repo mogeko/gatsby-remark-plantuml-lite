@@ -8,7 +8,7 @@ it("基础测试", async () => {
   };
   const { isValid, errors } = await testPluginOptionsSchema(
     pluginOptionsSchema,
-    options
+    options,
   );
   expect(isValid).toBe(true);
   expect(errors).toEqual([]);
@@ -20,7 +20,7 @@ it("设置返回的图片类型为 PNG", async () => {
   };
   const { isValid, errors } = await testPluginOptionsSchema(
     pluginOptionsSchema,
-    options
+    options,
   );
   expect(isValid).toBe(true);
   expect(errors).toEqual([]);
@@ -32,7 +32,7 @@ it("测试默认情况", async () => {
   };
   const { isValid, errors } = await testPluginOptionsSchema(
     pluginOptionsSchema,
-    options
+    options,
   );
   expect(isValid).toBe(true);
   expect(errors).toEqual([]);
@@ -44,7 +44,7 @@ it("测试类型错误的情况", async () => {
   };
   const { isValid, errors } = await testPluginOptionsSchema(
     pluginOptionsSchema,
-    options
+    options,
   );
   expect(isValid).toBe(false);
   expect(errors).toEqual([`"imageType" must be a string`]);
@@ -56,7 +56,7 @@ it("测试选项不存在的情况", async () => {
   };
   const { isValid, errors } = await testPluginOptionsSchema(
     pluginOptionsSchema,
-    options
+    options,
   );
   expect(isValid).toBe(true);
   expect(errors).toEqual([]);

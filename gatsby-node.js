@@ -18,12 +18,12 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     title: Joi.string()
       .default(null)
       .description(
-        "Specifies the title property of the generated PlantUML image."
+        "Specifies the title property of the generated PlantUML image.",
       ),
     alt: Joi.string()
       .default("plantuml")
       .description(
-        "Specifies the alt property of the generated PlantUML image."
+        "Specifies the alt property of the generated PlantUML image.",
       ),
   });
 };

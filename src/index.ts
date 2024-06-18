@@ -3,7 +3,7 @@ import type { Root } from "mdast";
 
 export default function remarkPlantUML(
   { markdownAST }: ParsedTypes,
-  pluginOptions?: OptionTypes
+  pluginOptions?: OptionTypes,
 ): Root {
   const imageType = pluginOptions?.imageType ?? "svg";
   const server = pluginOptions?.server
@@ -21,7 +21,7 @@ export default function remarkPlantUML(
     {
       title: pluginOptions?.title ?? null,
       alt: pluginOptions?.alt ?? null,
-    }
+    },
   );
 }
 

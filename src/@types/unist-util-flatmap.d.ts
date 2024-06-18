@@ -4,12 +4,12 @@ declare module "unist-util-flatmap" {
     type Fn<T extends Content> = (
       node: T,
       index: number,
-      parent: Parent | null
+      parent: Parent | null,
     ) => Content[];
   }
   declare function flatMap<T extends Content>(
     ast: Root,
-    fn: flatMap.Fn<T>
+    fn: flatMap.Fn<T>,
   ): Root;
   export = flatMap;
 }

@@ -34,7 +34,7 @@ const RAW_RUNTIME_STATE =
           ["gatsby-plugin-utils", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:4.13.1"],\
           ["mdast-util-from-markdown", "npm:0.8.5"],\
           ["plantuml-encoder", "npm:1.4.0"],\
-          ["prettier", "npm:2.8.8"],\
+          ["prettier", "npm:3.3.2"],\
           ["tsup", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:8.1.0"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
           ["unist-util-flatmap", "npm:1.0.0"],\
@@ -2200,7 +2200,7 @@ const RAW_RUNTIME_STATE =
           ["gatsby-plugin-utils", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:4.13.1"],\
           ["mdast-util-from-markdown", "npm:0.8.5"],\
           ["plantuml-encoder", "npm:1.4.0"],\
-          ["prettier", "npm:2.8.8"],\
+          ["prettier", "npm:3.3.2"],\
           ["tsup", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:8.1.0"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
           ["unist-util-flatmap", "npm:1.0.0"],\
@@ -3852,10 +3852,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["prettier", [\
-      ["npm:2.8.8", {\
-        "packageLocation": "./.yarn/cache/prettier-npm-2.8.8-430828a36c-00cdb6ab02.zip/node_modules/prettier/",\
+      ["npm:3.3.2", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.3.2-efeafcaa4b/node_modules/prettier/",\
         "packageDependencies": [\
-          ["prettier", "npm:2.8.8"]\
+          ["prettier", "npm:3.3.2"]\
         ],\
         "linkType": "HARD"\
       }]\

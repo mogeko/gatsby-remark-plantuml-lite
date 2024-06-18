@@ -6,7 +6,7 @@ export const nodeOperator = (
   tree: Root,
   fn: (encoded: string) => string,
   codeBlockName: string = "plantuml",
-  opt: NodeOpt = { title: null, alt: codeBlockName }
+  opt: NodeOpt = { title: null, alt: codeBlockName },
 ): Root => {
   return flatmap<Code>(tree, (node: Code): Content[] => {
     return node.type === "code" && node.lang === codeBlockName
