@@ -1,5 +1,5 @@
 import { describe, beforeAll, it, expect } from "vitest";
-import fromMarkdown from "mdast-util-from-markdown";
+import { fromMarkdown } from "mdast-util-from-markdown";
 import { nodeOperator } from "@/lib";
 import type { Root, Paragraph, Image } from "mdast";
 
@@ -11,11 +11,11 @@ describe("基础测试", () => {
   beforeAll(() => {
     resAst = nodeOperator(
       fromMarkdown(
-        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
+        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
       ),
       (encoded) => {
         return `https://www.plantuml.com/plantuml/svg/${encoded}`;
-      },
+      }
     );
     paragraph = resAst.children[0] as Paragraph;
     image = paragraph.children[0] as Image;
@@ -41,7 +41,7 @@ describe("基础测试", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
-      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/,
+      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/
     );
   });
 });
@@ -54,13 +54,13 @@ describe("测试选项", () => {
   beforeAll(() => {
     resAst = nodeOperator(
       fromMarkdown(
-        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
+        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
       ),
       (encoded) => {
         return `https://www.plantuml.com/plantuml/svg/${encoded}`;
       },
       "plantuml",
-      { title: "exampleTitle", alt: "exampleAlt" },
+      { title: "exampleTitle", alt: "exampleAlt" }
     );
     paragraph = resAst.children[0] as Paragraph;
     image = paragraph.children[0] as Image;
@@ -80,12 +80,12 @@ describe("测试选项", () => {
 it("测试自定义 codeBlockName", () => {
   const resAst: Root = nodeOperator(
     fromMarkdown(
-      `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
+      `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
       return `https://www.plantuml.com/plantuml/svg/${encoded}`;
     },
-    "uml",
+    "uml"
   );
   const paragraph = resAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;
@@ -95,27 +95,27 @@ it("测试自定义 codeBlockName", () => {
 it("测试能否正确编码", () => {
   nodeOperator(
     fromMarkdown(
-      `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
+      `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
       expect(encoded).toStrictEqual(
-        "SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000",
+        "SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000"
       );
       return encoded;
-    },
+    }
   );
 });
 
 it("测试选项 only an title", () => {
   const resAst: Root = nodeOperator(
     fromMarkdown(
-      `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
+      `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
     ),
     (encoded) => {
       return `https://www.plantuml.com/plantuml/svg/${encoded}`;
     },
     "plantuml",
-    { title: "exampleTitle" },
+    { title: "exampleTitle" }
   );
   const paragraph = resAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;

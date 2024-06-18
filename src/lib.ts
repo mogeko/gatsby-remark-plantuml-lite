@@ -1,6 +1,6 @@
 import plantUMLEncoder from "plantuml-encoder";
 import flatmap from "unist-util-flatmap";
-import type { Code, Content, Root } from "mdast";
+import type { Code, RootContent, Root } from "mdast";
 
 export const nodeOperator = (
   tree: Root,
@@ -8,7 +8,7 @@ export const nodeOperator = (
   codeBlockName: string = "plantuml",
   opt: NodeOpt = { title: null, alt: codeBlockName },
 ): Root => {
-  return flatmap<Code>(tree, (node: Code): Content[] => {
+  return flatmap<Code>(tree, (node: Code): RootContent[] => {
     return node.type === "code" && node.lang === codeBlockName
       ? [
           {
