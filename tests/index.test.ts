@@ -38,7 +38,7 @@ describe("基础测试", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
-      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
+      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/
     );
   });
 });
@@ -94,6 +94,6 @@ it("测试自定义 codeBlockLang", () => {
   const paragraph = mdAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;
   expect(image.url).toMatch(
-    /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/
+    /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/
   );
 });

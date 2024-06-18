@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @param {{Joi: import("gatsby-plugin-utils").PluginOptionsSchemaJoi}} args
+ * @returns {import("gatsby-plugin-utils").ObjectSchema<any>}
+ */
 exports.pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
     codeBlockLang: Joi.string()
