@@ -1,4 +1,4 @@
-name: Build
+name: Test
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,4 +17,7 @@ jobs:
         with:
           node-version-file: package.json
       - run: yarn install --immutable
-      - run: yarn run build
+      - run: yarn run cov
+      - uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true

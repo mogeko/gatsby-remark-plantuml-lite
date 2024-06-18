@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-plantuml-lite",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -49,7 +49,7 @@
   },
   "packageManager": "yarn@4.3.0",
   "engines": {
-    "node": ">=18.20.3",
-    "npm": ">=10.7.8"
+    "node": ">=18.0.0",
+    "npm": ">=8.6.0"
   }
 }
