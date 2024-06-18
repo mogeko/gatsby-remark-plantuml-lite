@@ -11,9 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Node.js
-        uses: actions/setup-node@v3.5.0
+        uses: actions/setup-node@v4.0.2
         with:
           node-version-file: package.json
       - run: yarn install --immutable
