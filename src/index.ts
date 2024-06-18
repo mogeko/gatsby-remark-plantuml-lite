@@ -18,7 +18,10 @@ export default function remarkPlantUML(
       return `${server}/${imageType}/${encoded}`;
     },
     codeBlockLang,
-    { title: pluginOptions?.title, alt: pluginOptions?.alt }
+    {
+      title: pluginOptions?.title ?? null,
+      alt: pluginOptions?.alt ?? null,
+    }
   );
 }
 

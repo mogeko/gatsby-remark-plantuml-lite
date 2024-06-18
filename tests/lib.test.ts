@@ -1,6 +1,7 @@
-import { Root, Paragraph, Image } from "mdast";
-import fromMarkdown = require("mdast-util-from-markdown");
-import nodeOperator from "../src/lib";
+import { describe, beforeAll, it, expect } from "vitest";
+import fromMarkdown from "mdast-util-from-markdown";
+import { nodeOperator } from "@/lib";
+import type { Root, Paragraph, Image } from "mdast";
 
 describe("基础测试", () => {
   let resAst: Root;
@@ -20,23 +21,23 @@ describe("基础测试", () => {
     image = paragraph.children[0] as Image;
   });
 
-  test("测试 Wrap (Paragraph) 的类型", () => {
+  it("测试 Wrap (Paragraph) 的类型", () => {
     expect(paragraph.type).toEqual("paragraph");
   });
 
-  test("测试 Image 的类型", () => {
+  it("测试 Image 的类型", () => {
     expect(image.type).toEqual("image");
   });
 
-  test("测试 Image 的 Alt", () => {
+  it("测试 Image 的 Alt", () => {
     expect(image.alt).toEqual("plantuml");
   });
 
-  test("测试 Image 的 Title", () => {
+  it("测试 Image 的 Title", () => {
     expect(image.title).toEqual(null);
   });
 
-  test("测试 Image 的 Url", () => {
+  it("测试 Image 的 Url", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
@@ -65,18 +66,18 @@ describe("测试选项", () => {
     image = paragraph.children[0] as Image;
   });
 
-  test("测试选项 title", () => {
+  it("测试选项 title", () => {
     expect(image.title).not.toBeNull;
     expect(image.title).toEqual("exampleTitle");
   });
 
-  test("测试选项 alt", () => {
+  it("测试选项 alt", () => {
     expect(image.alt).not.toEqual("plantuml");
     expect(image.alt).toEqual("exampleAlt");
   });
 });
 
-test("测试自定义 codeBlockName", () => {
+it("测试自定义 codeBlockName", () => {
   const resAst: Root = nodeOperator(
     fromMarkdown(
       `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
@@ -91,7 +92,7 @@ test("测试自定义 codeBlockName", () => {
   expect(image.alt).toEqual("uml");
 });
 
-test("测试能否正确编码", () => {
+it("测试能否正确编码", () => {
   nodeOperator(
     fromMarkdown(
       `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
@@ -105,7 +106,7 @@ test("测试能否正确编码", () => {
   );
 });
 
-test("测试选项 only an title", () => {
+it("测试选项 only an title", () => {
   const resAst: Root = nodeOperator(
     fromMarkdown(
       `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``

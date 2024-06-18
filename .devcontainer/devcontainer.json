@@ -16,11 +16,10 @@
         "editor.tabSize": 2
       },
       "extensions": [
-        "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
+        "arcanis.vscode-zipfs",
         "github.vscode-pull-request-github",
-        "github.vscode-github-actions",
-        "arcanis.vscode-zipfs"
+        "github.vscode-github-actions"
       ]
     }
   },

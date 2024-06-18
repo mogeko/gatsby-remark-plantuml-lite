@@ -1,6 +1,7 @@
-import { Image, Paragraph, Root } from "mdast";
-import fromMarkdown = require("mdast-util-from-markdown");
-import remarkPlantUML from "../src/index";
+import { describe, beforeAll, it, expect } from "vitest";
+import fromMarkdown from "mdast-util-from-markdown";
+import remarkPlantUML from "@/index";
+import type { Image, Paragraph, Root } from "mdast";
 
 describe("基础测试", () => {
   let resAst: Root;
@@ -17,23 +18,23 @@ describe("基础测试", () => {
     image = paragraph.children[0] as Image;
   });
 
-  test("测试 Wrap (Paragraph) 的类型", () => {
+  it("测试 Wrap (Paragraph) 的类型", () => {
     expect(paragraph.type).toEqual("paragraph");
   });
 
-  test("测试 Image 的类型", () => {
+  it("测试 Image 的类型", () => {
     expect(image.type).toEqual("image");
   });
 
-  test("测试 Image 的 Alt", () => {
+  it("测试 Image 的 Alt", () => {
     expect(image.alt).toEqual("plantuml");
   });
 
-  test("测试 Image 的 Title", () => {
+  it("测试 Image 的 Title", () => {
     expect(image.title).toEqual(null);
   });
 
-  test("测试 Image 的 Url", () => {
+  it("测试 Image 的 Url", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
@@ -60,16 +61,16 @@ describe("测试配置选项", () => {
     image = paragraph.children[0] as Image;
   });
 
-  test("测试选项 imageType", () => {
+  it("测试选项 imageType", () => {
     expect(image.url).toMatch(/png/);
   });
 
-  test("测试选项 server", () => {
+  it("测试选项 server", () => {
     expect(image.url).toMatch(/https:\/\/example.com/);
   });
 });
 
-test("测试自动格式化 url", () => {
+it("测试自动格式化 url", () => {
   const rawAst = fromMarkdown(
     `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
   );
@@ -82,7 +83,7 @@ test("测试自动格式化 url", () => {
   expect(image.url).toMatch(/https:\/\/example.com/);
 });
 
-test("测试自定义 codeBlockLang", () => {
+it("测试自定义 codeBlockLang", () => {
   const rawAst = fromMarkdown(
     `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
   );
