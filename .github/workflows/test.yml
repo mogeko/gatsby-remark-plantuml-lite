@@ -18,7 +18,7 @@ jobs:
           node-version-file: package.json
       - run: yarn install --immutable
       - run: yarn run cov
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v4.5.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
