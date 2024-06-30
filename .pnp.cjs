@@ -616,7 +616,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@npmcli/fs", "npm:1.0.0"],\
           ["@gar/promisify", "npm:1.1.2"],\
-          ["semver", "npm:7.3.5"]\
+          ["semver", "npm:7.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3047,7 +3047,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/make-dir-npm-3.1.0-d1d7505142-484200020a.zip/node_modules/make-dir/",\
         "packageDependencies": [\
           ["make-dir", "npm:3.1.0"],\
-          ["semver", "npm:6.3.0"]\
+          ["semver", "npm:6.3.1"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -3680,7 +3680,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/node-abi-npm-3.65.0-d35ff0f835-2b58813cfd.zip/node_modules/node-abi/",\
         "packageDependencies": [\
           ["node-abi", "npm:3.65.0"],\
-          ["semver", "npm:7.3.5"]\
+          ["semver", "npm:7.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3715,7 +3715,7 @@ const RAW_RUNTIME_STATE =
           ["nopt", "npm:5.0.0"],\
           ["npmlog", "npm:4.1.2"],\
           ["rimraf", "npm:3.0.2"],\
-          ["semver", "npm:7.3.5"],\
+          ["semver", "npm:7.6.2"],\
           ["tar", "npm:6.2.1"],\
           ["which", "npm:2.0.2"]\
         ],\
@@ -4404,18 +4404,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["semver", [\
-      ["npm:6.3.0", {\
-        "packageLocation": "./.yarn/cache/semver-npm-6.3.0-b3eace8bfd-8dd72e7c7c.zip/node_modules/semver/",\
+      ["npm:6.3.1", {\
+        "packageLocation": "./.yarn/cache/semver-npm-6.3.1-bcba31fdbe-1ef3a85bd0.zip/node_modules/semver/",\
         "packageDependencies": [\
-          ["semver", "npm:6.3.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:7.3.5", {\
-        "packageLocation": "./.yarn/cache/semver-npm-7.3.5-618cf5db6a-2285437859.zip/node_modules/semver/",\
-        "packageDependencies": [\
-          ["semver", "npm:7.3.5"],\
-          ["lru-cache", "npm:6.0.0"]\
+          ["semver", "npm:6.3.1"]\
         ],\
         "linkType": "HARD"\
       }],\
