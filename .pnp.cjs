@@ -29,14 +29,14 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@tsconfig/strictest", "npm:2.0.5"],\
           ["@types/mdast", "npm:4.0.4"],\
-          ["@types/node", "npm:20.14.5"],\
+          ["@types/node", "npm:20.14.9"],\
           ["@vitest/coverage-v8", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:1.6.0"],\
           ["gatsby-plugin-utils", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:4.13.1"],\
           ["mdast-util-from-markdown", "npm:2.0.1"],\
           ["plantuml-encoder", "npm:1.4.0"],\
           ["prettier", "npm:3.3.2"],\
           ["tsup", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:8.1.0"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
+          ["typescript", "patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=b45daf"],\
           ["unist-util-flatmap", "npm:1.0.0"],\
           ["vitest", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:1.6.0"]\
         ],\
@@ -875,7 +875,7 @@ const RAW_RUNTIME_STATE =
           ["@types/cacheable-request", "npm:6.0.3"],\
           ["@types/http-cache-semantics", "npm:4.0.4"],\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:20.14.5"],\
+          ["@types/node", "npm:20.14.9"],\
           ["@types/responselike", "npm:1.0.3"]\
         ],\
         "linkType": "HARD"\
@@ -914,7 +914,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-keyv-npm-3.1.4-a8082ea56b-e009a2bfb5.zip/node_modules/@types/keyv/",\
         "packageDependencies": [\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:20.14.5"]\
+          ["@types/node", "npm:20.14.9"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -939,10 +939,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/node", [\
-      ["npm:20.14.5", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-20.14.5-07c835e492-74c7974a8c.zip/node_modules/@types/node/",\
+      ["npm:20.14.9", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-20.14.9-a4571e1932-f313b06c79.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:20.14.5"],\
+          ["@types/node", "npm:20.14.9"],\
           ["undici-types", "npm:5.26.5"]\
         ],\
         "linkType": "HARD"\
@@ -953,7 +953,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-responselike-npm-1.0.3-de0150f03d-6ac4b35723.zip/node_modules/@types/responselike/",\
         "packageDependencies": [\
           ["@types/responselike", "npm:1.0.3"],\
-          ["@types/node", "npm:20.14.5"]\
+          ["@types/node", "npm:20.14.9"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2160,14 +2160,14 @@ const RAW_RUNTIME_STATE =
           ["gatsby-remark-plantuml-lite", "workspace:."],\
           ["@tsconfig/strictest", "npm:2.0.5"],\
           ["@types/mdast", "npm:4.0.4"],\
-          ["@types/node", "npm:20.14.5"],\
+          ["@types/node", "npm:20.14.9"],\
           ["@vitest/coverage-v8", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:1.6.0"],\
           ["gatsby-plugin-utils", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:4.13.1"],\
           ["mdast-util-from-markdown", "npm:2.0.1"],\
           ["plantuml-encoder", "npm:1.4.0"],\
           ["prettier", "npm:3.3.2"],\
           ["tsup", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:8.1.0"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
+          ["typescript", "patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=b45daf"],\
           ["unist-util-flatmap", "npm:1.0.0"],\
           ["vitest", "virtual:08abdc25947ef55ef7857a1ec769154d66285f23563dd52053760a8fb5238d855962d71af7dfc91ea062be70549302ca15cb32065fa96d455e12c487b7eb1dee#npm:1.6.0"]\
         ],\
@@ -4969,7 +4969,7 @@ const RAW_RUNTIME_STATE =
           ["source-map", "npm:0.8.0-beta.0"],\
           ["sucrase", "npm:3.35.0"],\
           ["tree-kill", "npm:1.2.2"],\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
+          ["typescript", "patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=b45daf"]\
         ],\
         "packagePeers": [\
           "@microsoft/api-extractor",\
@@ -5014,10 +5014,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["typescript", [\
-      ["patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c", {\
-        "packageLocation": "./.yarn/cache/typescript-patch-6e159bfddb-760f7d92fb.zip/node_modules/typescript/",\
+      ["patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=b45daf", {\
+        "packageLocation": "./.yarn/cache/typescript-patch-1ea4a58147-b61b8bb4b4.zip/node_modules/typescript/",\
         "packageDependencies": [\
-          ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
+          ["typescript", "patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=b45daf"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5160,7 +5160,7 @@ const RAW_RUNTIME_STATE =
           ["vite", "virtual:6d0929b6ca0aba1f1574fa929f1506aff066ba8295f0629fdc5fae8ede4f0ca4612bc9ab3678dd0a764250c0dbe3f260715fc296d45e129b61325ae3896e51cf#npm:5.3.1"],\
           ["@types/less", null],\
           ["@types/lightningcss", null],\
-          ["@types/node", "npm:20.14.5"],\
+          ["@types/node", "npm:20.14.9"],\
           ["@types/sass", null],\
           ["@types/stylus", null],\
           ["@types/sugarss", null],\
@@ -5224,7 +5224,7 @@ const RAW_RUNTIME_STATE =
           ["@types/edge-runtime__vm", null],\
           ["@types/happy-dom", null],\
           ["@types/jsdom", null],\
-          ["@types/node", "npm:20.14.5"],\
+          ["@types/node", "npm:20.14.9"],\
           ["@types/vitest__browser", null],\
           ["@types/vitest__ui", null],\
           ["@vitest/browser", null],\
