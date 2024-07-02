@@ -11,7 +11,7 @@ describe("基础测试", () => {
   beforeAll(() => {
     resAst = remarkPlantUML({
       markdownAST: fromMarkdown(
-        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
+        `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
       ),
     });
     paragraph = resAst.children[0] as Paragraph;
@@ -38,7 +38,7 @@ describe("基础测试", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
-      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/
+      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/,
     );
   });
 });
@@ -52,10 +52,10 @@ describe("测试配置选项", () => {
     mdAst = remarkPlantUML(
       {
         markdownAST: fromMarkdown(
-          `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
+          `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
         ),
       },
-      { imageType: "png", server: "https://example.com" }
+      { imageType: "png", server: "https://example.com" },
     );
     paragraph = mdAst.children[0] as Paragraph;
     image = paragraph.children[0] as Image;
@@ -72,11 +72,11 @@ describe("测试配置选项", () => {
 
 it("测试自动格式化 url", () => {
   const rawAst = fromMarkdown(
-    `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
+    `\`\`\`plantuml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
   );
   const mdAst = remarkPlantUML(
     { markdownAST: rawAst },
-    { server: "https://example.com/" } // will delete the end '/'
+    { server: "https://example.com/" }, // will delete the end '/'
   );
   const paragraph = mdAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;
@@ -85,15 +85,15 @@ it("测试自动格式化 url", () => {
 
 it("测试自定义 codeBlockLang", () => {
   const rawAst = fromMarkdown(
-    `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``
+    `\`\`\`uml\n@startuml\nA -> B: Hello / 你好'\n@enduml\n\`\`\``,
   );
   const mdAst: Root = remarkPlantUML(
     { markdownAST: rawAst },
-    { codeBlockLang: "uml" }
+    { codeBlockLang: "uml" },
   );
   const paragraph = mdAst.children[0] as Paragraph;
   const image = paragraph.children[0] as Image;
   expect(image.url).toMatch(
-    /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/
+    /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/,
   );
 });
