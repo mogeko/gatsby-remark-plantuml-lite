@@ -1,6 +1,6 @@
 # gatsby-remark-plantuml-lite
 
-[![ci_icon]][ci_link] [![codecov_icon]][codecov_link] [![npm_icon]][npm_link]
+[![build_icon]][build_link] [![codeql_icon]][codeql_link] [![codecov_icon]][codecov_link] [![npm_icon]][npm_link]
 
 **A** light **Gatsby plugin to transform [PlantUML][plantuml_home] code blocks into SVG/PNG images(_without Java and Graphviz_).**
 
@@ -126,8 +126,10 @@ The code in this project is released under the [MIT License][license].
 
 <!-- badge -->
 
-[ci_icon]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/build.yml/badge.svg
-[ci_link]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/build.yml
+[build_icon]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/build.yml/badge.svg
+[build_link]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/build.yml
+[codeql_icon]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/github-code-scanning/codeql/badge.svg
+[codeql_link]: https://github.com/mogeko/gatsby-remark-plantuml-lite/actions/workflows/github-code-scanning/codeql
 [codecov_icon]: https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite/branch/master/graph/badge.svg
 [codecov_link]: https://codecov.io/gh/Mogeko/gatsby-remark-plantuml-lite
 [npm_icon]: https://img.shields.io/npm/v/gatsby-remark-plantuml-lite?logo=npm
