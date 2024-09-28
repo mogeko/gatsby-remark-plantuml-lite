@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-plantuml-lite",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,8 +32,8 @@
     "cov": "vitest run --coverage"
   },
   "dependencies": {
-    "plantuml-encoder": "^1.4.0",
-    "unist-util-flatmap": "^1.0.0"
+    "unist-builder": "^4.0.0",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.2",

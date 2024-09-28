@@ -31,7 +31,7 @@ describe("基础测试", () => {
   });
 
   it("测试 Image 的 Title", () => {
-    expect(image.title).toEqual(null);
+    expect(image.title).toBeUndefined();
   });
 
   it("测试 Image 的 Url", () => {
