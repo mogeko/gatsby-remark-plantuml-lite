@@ -977,6 +977,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/unist@npm:^2.0.3":
+  version: 2.0.11
+  resolution: "@types/unist@npm:2.0.11"
+  checksum: 10/6d436e832bc35c6dde9f056ac515ebf2b3384a1d7f63679d12358766f9b313368077402e9c1126a14d827f10370a5485e628bf61aa91117cf4fc882423191a4e
+  languageName: node
+  linkType: hard
+
 "@vitest/coverage-v8@npm:^2.0.1":
   version: 2.1.1
   resolution: "@vitest/coverage-v8@npm:2.1.1"
@@ -2109,11 +2116,12 @@ __metadata:
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.1"
     gatsby-plugin-utils: "npm:^4.13.1"
+    mdast-builder: "npm:^1.1.1"
     mdast-util-from-markdown: "npm:2.0.1"
     plantuml-encoder: "npm:^1.4.0"
     tsup: "npm:^8.1.0"
     typescript: "npm:^5.4.5"
-    unist-util-flatmap: "npm:^1.0.0"
+    unist-util-visit: "npm:^5.0.0"
     vitest: "npm:^2.0.1"
   peerDependencies:
     gatsby: ^5.0.0
@@ -2813,6 +2821,15 @@ __metadata:
     socks-proxy-agent: "npm:^6.0.0"
     ssri: "npm:^8.0.0"
   checksum: 10/a868e74fc223a78afb7a1f8115133befdffae84f07a5f5dd9317cbf9f784a8373f28829a73ae3f31060e1b0cb4944e73257733c3b10c314354060fab412b6028
+  languageName: node
+  linkType: hard
+
+"mdast-builder@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "mdast-builder@npm:1.1.1"
+  dependencies:
+    "@types/unist": "npm:^2.0.3"
+  checksum: 10/e45c40732398b54fa4415026c6560f901fc5cd1260b925c9c837e8b3e676d487977aedb2790cf327459aaa67b19cffda5d3133aaca085235c8e54bc7882f0ebc
   languageName: node
   linkType: hard
 
@@ -4612,10 +4629,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-flatmap@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "unist-util-flatmap@npm:1.0.0"
-  checksum: 10/6c293526f11d1330c7676c933b0879867653b61cedf7b5dfa5fc581987a428820b9f3574649c4a2497201f89169fcb2849af405af2e54f887e59d4836436e143
+"unist-util-is@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "unist-util-is@npm:6.0.0"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+  checksum: 10/edd6a93fb2255addf4b9eeb304c1da63c62179aef793169dd64ab955cf2f6814885fe25f95f8105893e3562dead348af535718d7a84333826e0491c04bf42511
   languageName: node
   linkType: hard
 
@@ -4625,6 +4644,27 @@ __metadata:
   dependencies:
     "@types/unist": "npm:^3.0.0"
   checksum: 10/d15c88aca7a31902d95d5b5355bbe09583cf6f6ff6e59e134ef76c76d3c30bc1021f2d7ea5b7897c6d0858ed5f3770c1b19de9c78274f50d72f95a0d05f1af71
+  languageName: node
+  linkType: hard
+
+"unist-util-visit-parents@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "unist-util-visit-parents@npm:6.0.1"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+    unist-util-is: "npm:^6.0.0"
+  checksum: 10/645b3cbc5e923bc692b1eb1a9ca17bffc5aabc25e6090ff3f1489bff8effd1890b28f7a09dc853cb6a7fa0da8581bfebc9b670a68b53c4c086cb9610dfd37701
+  languageName: node
+  linkType: hard
+
+"unist-util-visit@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "unist-util-visit@npm:5.0.0"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+    unist-util-is: "npm:^6.0.0"
+    unist-util-visit-parents: "npm:^6.0.0"
+  checksum: 10/f2bbde23641e9ade7640358c06ddeec0f38342322eb8e7819d9ee380b0f859d25d084dde22bf63db0280b3b2f36575f15aa1d6c23acf276c91c2493cf799e3b0
   languageName: node
   linkType: hard
 

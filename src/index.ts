@@ -1,5 +1,7 @@
-import { type NodeOpt, nodeOperator } from "@/lib";
-import type { Root } from "mdast";
+import type { Root, Paragraph } from "mdast";
+import plantUMLEncoder from "plantuml-encoder";
+import { visit } from "unist-util-visit";
+import { paragraph, image } from "mdast-builder";
 
 export default function remarkPlantUML(
   { markdownAST }: ParsedTypes,
@@ -12,17 +14,20 @@ export default function remarkPlantUML(
       : pluginOptions.server
     : "https://www.plantuml.com/plantuml";
   const codeBlockLang = pluginOptions?.codeBlockLang ?? "plantuml";
-  return nodeOperator(
-    markdownAST,
-    (encoded) => {
-      return `${server}/${imageType}/${encoded}`;
-    },
-    codeBlockLang,
-    {
-      title: pluginOptions?.title ?? null,
-      alt: pluginOptions?.alt ?? null,
-    },
-  );
+
+  visit(markdownAST, "code", (node, index, parents) => {
+    if (node.lang === codeBlockLang && parents) {
+      markdownAST.children[index ?? 0] = paragraph(
+        image(
+          `${server}/${imageType}/${plantUMLEncoder.encode(node.value)}`,
+          pluginOptions?.title,
+          pluginOptions?.alt ?? codeBlockLang,
+        ),
+      ) as Paragraph;
+    }
+  });
+
+  return markdownAST;
 }
 
 type ParsedTypes = {
@@ -33,4 +38,6 @@ type OptionTypes = {
   imageType?: "svg" | "png";
   server?: string;
   codeBlockLang?: string;
-} & NodeOpt;
+  title?: string;
+  alt?: string;
+};
