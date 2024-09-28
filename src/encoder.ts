@@ -4,36 +4,33 @@ export function deflate(buff: InputType) {
   return deflateRawSync(buff, { level: 9 }).toString("binary");
 }
 
-function encode6bit(code: number) {
-  if (code < 10) return String.fromCharCode(48 + code); // 0-9
-  if (code < 36) return String.fromCharCode(55 + code); // A-Z
-  if (code < 62) return String.fromCharCode(61 + code); // a-z
-  if (code === 62) return "-";
-  if (code === 63) return "_";
+function encode6bit(b: number) {
+  if (b < 10) return String.fromCharCode(48 + b); // 0-9
+  if (b < 36) return String.fromCharCode(55 + b); // A-Z
+  if (b < 62) return String.fromCharCode(61 + b); // a-z
+  if (b === 62) return "-";
+  if (b === 63) return "_";
   return "?";
 }
 
-function append3bytes(b1: number, b2: number, b3: number) {
-  return (
-    encode6bit((b1 >> 2) & 0x3f) +
-    encode6bit(((b1 & 0x3) << 4) | ((b2 >> 4) & 0x3f)) +
-    encode6bit(((b2 & 0xf) << 2) | ((b3 >> 6) & 0x3f)) +
-    encode6bit(b3 & 0x3f)
+function encode3bytes(b1: number, b2: number, b3: number) {
+  return encode6bit((b1 >> 2) & 0x3f).concat(
+    encode6bit(((b1 & 0x3) << 4) | ((b2 >> 4) & 0x3f)),
+    encode6bit(((b2 & 0xf) << 2) | ((b3 >> 6) & 0x3f)),
+    encode6bit(b3 & 0x3f),
   );
 }
 
-function encode64(data: string) {
+function encode(s: string) {
   let r = "";
-  for (let i = 0; i < data.length; i += 3) {
-    if (i + 2 === data.length) {
-      r += append3bytes(data.charCodeAt(i), data.charCodeAt(i + 1), 0);
-    } else if (i + 1 === data.length) {
-      r += append3bytes(data.charCodeAt(i), 0, 0);
+  for (let i = 0; i < s.length; i += 3) {
+    if (i + 2 === s.length) {
+      r = r.concat(encode3bytes(s.charCodeAt(i), s.charCodeAt(i + 1), 0));
+    } else if (i + 1 === s.length) {
+      r = r.concat(encode3bytes(s.charCodeAt(i), 0, 0));
     } else {
-      r += append3bytes(
-        data.charCodeAt(i),
-        data.charCodeAt(i + 1),
-        data.charCodeAt(i + 2),
+      r = r.concat(
+        encode3bytes(s.charCodeAt(i), s.charCodeAt(i + 1), s.charCodeAt(i + 2)),
       );
     }
   }
@@ -41,7 +38,7 @@ function encode64(data: string) {
 }
 
 export function encoder(puml: string) {
-  return encode64(deflate(puml));
+  return encode(deflate(puml));
 }
 
 if (import.meta.vitest) {
@@ -65,14 +62,14 @@ if (import.meta.vitest) {
   });
 
   it("append3bytes", () => {
-    expect(append3bytes(1, 2, 3)).toStrictEqual("0G83");
-    expect(append3bytes(1, 2, 0)).toStrictEqual("0G80");
-    expect(append3bytes(1, 0, 0)).toStrictEqual("0G00");
+    expect(encode3bytes(1, 2, 3)).toStrictEqual("0G83");
+    expect(encode3bytes(1, 2, 0)).toStrictEqual("0G80");
+    expect(encode3bytes(1, 0, 0)).toStrictEqual("0G00");
   });
 
   it("encode64", () => {
     expect(
-      encode64(Buffer.from([75, 76, 74, 6, 0]).toString("binary")),
+      encode(Buffer.from([75, 76, 74, 6, 0]).toString("binary")),
     ).toStrictEqual("IqnA1W00");
   });
 }
