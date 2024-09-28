@@ -2115,6 +2115,9 @@ __metadata:
     typescript: "npm:^5.4.5"
     unist-util-flatmap: "npm:^1.0.0"
     vitest: "npm:^2.0.1"
+  peerDependencies:
+    gatsby: ^5.0.0
+    graphql: ^16.0.0
   languageName: unknown
   linkType: soft
 
