@@ -1,5 +1,5 @@
-import { it, expect } from "vitest";
 import { testPluginOptionsSchema } from "gatsby-plugin-utils";
+import { expect, it } from "vitest";
 import { pluginOptionsSchema } from "../gatsby-node";
 
 it("基础测试", async () => {

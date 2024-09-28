@@ -1,7 +1,7 @@
-import { describe, beforeAll, it, expect } from "vitest";
-import { fromMarkdown } from "mdast-util-from-markdown";
 import { nodeOperator } from "@/lib";
-import type { Root, Paragraph, Image } from "mdast";
+import type { Image, Paragraph, Root } from "mdast";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { beforeAll, describe, expect, it } from "vitest";
 
 describe("基础测试", () => {
   let resAst: Root;
@@ -41,7 +41,7 @@ describe("基础测试", () => {
     expect(image.url).toMatch(/https:\/\/www\.plantuml\.com/);
     expect(image.url).toMatch(/svg/);
     expect(image.url).toMatch(
-      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000/,
+      /SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80/,
     );
   });
 });
@@ -99,7 +99,7 @@ it("测试能否正确编码", () => {
     ),
     (encoded) => {
       expect(encoded).toStrictEqual(
-        "SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIIdDp0000",
+        "SoWkIImgAStDuN9KqBLJSB9Iy4ZDoSbNq5TuidV1qwLxrRaSKlDIWF80",
       );
       return encoded;
     },
