@@ -1,11 +1,11 @@
+import type { Code, Root, RootContent } from "mdast";
 import plantUMLEncoder from "plantuml-encoder";
 import flatmap from "unist-util-flatmap";
-import type { Code, RootContent, Root } from "mdast";
 
 export const nodeOperator = (
   tree: Root,
   fn: (encoded: string) => string,
-  codeBlockName: string = "plantuml",
+  codeBlockName = "plantuml",
   opt: NodeOpt = { title: null, alt: codeBlockName },
 ): Root => {
   return flatmap<Code>(tree, (node: Code): RootContent[] => {

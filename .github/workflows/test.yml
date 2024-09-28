@@ -2,7 +2,6 @@ name: Test
 
 on:
   push:
-    branches-ignore: [master]
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -17,6 +16,7 @@ jobs:
         with:
           node-version-file: package.json
       - run: yarn install --immutable
+      - run: yarn biome ci --reporter=github
       - run: yarn run cov
       - uses: codecov/codecov-action@v4.5.0
         with:

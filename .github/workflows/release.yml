@@ -7,9 +7,8 @@ on:
 
 jobs:
   release:
-    name: Release
+    name: Release Package to NPM and GitHub Packages
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Setup registry url with NPM
@@ -19,31 +18,19 @@ jobs:
           node-version-file: package.json
       - run: yarn install --immutable
       - run: yarn run build
-      - name: Publish release @latest
-        run: npm publish --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{!contains(github.ref, '-alpha')}}
-      - name: Publish release @next
-        run: npm publish --access public --tag next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{contains(github.ref, '-alpha')}}
       - name: Rename before Publish to GitHub Packages
-        run: 'sed -i "s/\"name\": \"/\"name\": \"@mogeko\//g" package.json'
+        uses: mikefarah/yq@v4.44.3
+        with:
+          cmd: yq -i '.name = "@mogeko/gatsby-remark-plantuml-lite"' 'package.json'
       - name: Setup registry url with GitHub Packages
         uses: actions/setup-node@v4.0.4
         with:
           registry-url: https://npm.pkg.github.com
-          node-version: 16
+          node-version-file: package.json
           scope: "@mogeko"
-      - name: Publish release @latest
-        run: npm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{!contains(github.ref, '-alpha')}}
-      - name: Publish release @next
-        run: npm publish --tag next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{contains(github.ref, '-alpha')}}

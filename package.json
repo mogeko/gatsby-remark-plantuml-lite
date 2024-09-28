@@ -1,13 +1,13 @@
 {
   "name": "gatsby-remark-plantuml-lite",
-  "version": "0.2.0",
-  "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images.",
+  "version": "0.2.1",
+  "description": "A Gatsby plugin to transform PlantUML code blocks into SVG images",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "homepage": "https://github.com/Mogeko/gatsby-remark-plantuml-lite",
-  "repository": "git@github.com:Mogeko/gatsby-remark-plantuml-lite.git",
+  "homepage": "https://github.com/mogeko/gatsby-remark-plantuml-lite",
+  "repository": "git@github.com:mogeko/gatsby-remark-plantuml-lite.git",
   "bugs": {
-    "url": "https://github.com/Mogeko/gatsby-remark-plantuml-lite/issues",
+    "url": "https://github.com/mogeko/gatsby-remark-plantuml-lite/issues",
     "email": "zhengjunyi@live.com"
   },
   "author": "Mogeko <zhengjunyi@live.com>",
@@ -26,8 +26,8 @@
     "build": "tsup",
     "clean": "rm -rf dist coverage",
     "release": "yarn build && yarn npm publish",
-    "lint": "prettier --check .",
-    "fmt": "prettier --write .",
+    "lint": "biome check",
+    "fmt": "biome check --write",
     "test": "vitest run",
     "cov": "vitest run --coverage"
   },
@@ -36,18 +36,22 @@
     "unist-util-flatmap": "^1.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.2",
     "@tsconfig/strictest": "^2.0.5",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.0.0",
     "@vitest/coverage-v8": "^2.0.1",
     "gatsby-plugin-utils": "^4.13.1",
     "mdast-util-from-markdown": "2.0.1",
-    "prettier": "^3.3.2",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5",
     "vitest": "^2.0.1"
   },
-  "packageManager": "yarn@4.3.0",
+  "peerDependencies": {
+    "gatsby": "^5.0.0",
+    "graphql": "^16.0.0"
+  },
+  "packageManager": "yarn@4.5.0",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.6.0"

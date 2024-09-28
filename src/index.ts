@@ -1,4 +1,4 @@
-import { nodeOperator, type NodeOpt } from "@/lib";
+import { type NodeOpt, nodeOperator } from "@/lib";
 import type { Root } from "mdast";
 
 export default function remarkPlantUML(
@@ -7,8 +7,8 @@ export default function remarkPlantUML(
 ): Root {
   const imageType = pluginOptions?.imageType ?? "svg";
   const server = pluginOptions?.server
-    ? pluginOptions.server.charAt(pluginOptions.server.length - 1) == "/"
-      ? pluginOptions.server.substr(0, pluginOptions.server.length - 1)
+    ? pluginOptions.server.charAt(pluginOptions.server.length - 1) === "/"
+      ? pluginOptions.server.substring(0, pluginOptions.server.length - 1)
       : pluginOptions.server
     : "https://www.plantuml.com/plantuml";
   const codeBlockLang = pluginOptions?.codeBlockLang ?? "plantuml";
