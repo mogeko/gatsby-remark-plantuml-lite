@@ -977,13 +977,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:^2.0.3":
-  version: 2.0.11
-  resolution: "@types/unist@npm:2.0.11"
-  checksum: 10/6d436e832bc35c6dde9f056ac515ebf2b3384a1d7f63679d12358766f9b313368077402e9c1126a14d827f10370a5485e628bf61aa91117cf4fc882423191a4e
-  languageName: node
-  linkType: hard
-
 "@vitest/coverage-v8@npm:^2.0.1":
   version: 2.1.1
   resolution: "@vitest/coverage-v8@npm:2.1.1"
@@ -2116,10 +2109,10 @@ __metadata:
     "@types/node": "npm:^22.0.0"
     "@vitest/coverage-v8": "npm:^2.0.1"
     gatsby-plugin-utils: "npm:^4.13.1"
-    mdast-builder: "npm:^1.1.1"
     mdast-util-from-markdown: "npm:2.0.1"
     tsup: "npm:^8.1.0"
     typescript: "npm:^5.4.5"
+    unist-builder: "npm:^4.0.0"
     unist-util-visit: "npm:^5.0.0"
     vitest: "npm:^2.0.1"
   peerDependencies:
@@ -2820,15 +2813,6 @@ __metadata:
     socks-proxy-agent: "npm:^6.0.0"
     ssri: "npm:^8.0.0"
   checksum: 10/a868e74fc223a78afb7a1f8115133befdffae84f07a5f5dd9317cbf9f784a8373f28829a73ae3f31060e1b0cb4944e73257733c3b10c314354060fab412b6028
-  languageName: node
-  linkType: hard
-
-"mdast-builder@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "mdast-builder@npm:1.1.1"
-  dependencies:
-    "@types/unist": "npm:^2.0.3"
-  checksum: 10/e45c40732398b54fa4415026c6560f901fc5cd1260b925c9c837e8b3e676d487977aedb2790cf327459aaa67b19cffda5d3133aaca085235c8e54bc7882f0ebc
   languageName: node
   linkType: hard
 
@@ -4618,6 +4602,15 @@ __metadata:
   dependencies:
     crypto-random-string: "npm:^2.0.0"
   checksum: 10/107cae65b0b618296c2c663b8e52e4d1df129e9af04ab38d53b4f2189e96da93f599c85f4589b7ffaf1a11c9327cbb8a34f04c71b8d4950d3e385c2da2a93828
+  languageName: node
+  linkType: hard
+
+"unist-builder@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "unist-builder@npm:4.0.0"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+  checksum: 10/4657177eb71eaa45f53e8a8c8b453f60be8e3b1e6b736a2bb1272cc9ccafb98018e43bb4e853a9f35c5030d4e6f7d27d392af2c82d57d9f91e02a760c857d61f
   languageName: node
   linkType: hard
 

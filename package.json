@@ -32,7 +32,7 @@
     "cov": "vitest run --coverage"
   },
   "dependencies": {
-    "mdast-builder": "^1.1.1",
+    "unist-builder": "^4.0.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
