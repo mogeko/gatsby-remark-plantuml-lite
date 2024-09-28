@@ -1,9 +1,4 @@
-import { promisify } from "node:util";
-import { type InputType, deflateRaw } from "node:zlib";
-
-export async function deflate(buff: InputType) {
-  return (await promisify(deflateRaw)(buff, { level: 9 })).toString("binary");
-}
+import { deflate, deflateSync } from "@/deflater";
 
 function encode6bit(code: number) {
   if (code < 10) return String.fromCharCode(48 + code); // 0-9
@@ -23,7 +18,7 @@ function append3bytes(b1: number, b2: number, b3: number) {
   );
 }
 
-export function encode64(data: string) {
+function encode64(data: string) {
   let r = "";
   for (let i = 0; i < data.length; i += 3) {
     if (i + 2 === data.length) {
@@ -41,11 +36,16 @@ export function encode64(data: string) {
   return r;
 }
 
-export async function encoder(puml: string) {
+export async function encode(puml: string) {
   return encode64(await deflate(puml));
 }
 
+export function encodeSync(puml: string) {
+  return encode64(deflateSync(puml));
+}
+
 if (import.meta.vitest) {
+  const { Buffer } = await import("node:buffer");
   const { expect, it } = await import("vitest");
 
   it("encode6bit", () => {
@@ -68,5 +68,11 @@ if (import.meta.vitest) {
     expect(append3bytes(1, 2, 3)).toStrictEqual("0G83");
     expect(append3bytes(1, 2, 0)).toStrictEqual("0G80");
     expect(append3bytes(1, 0, 0)).toStrictEqual("0G00");
+  });
+
+  it("encode64", () => {
+    expect(
+      encode64(Buffer.from([75, 76, 74, 6, 0]).toString("binary")),
+    ).toStrictEqual("IqnA1W00");
   });
 }

@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "mdast-builder": "^1.1.1",
-    "plantuml-encoder": "^1.4.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {

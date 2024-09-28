@@ -2118,7 +2118,6 @@ __metadata:
     gatsby-plugin-utils: "npm:^4.13.1"
     mdast-builder: "npm:^1.1.1"
     mdast-util-from-markdown: "npm:2.0.1"
-    plantuml-encoder: "npm:^1.4.0"
     tsup: "npm:^8.1.0"
     typescript: "npm:^5.4.5"
     unist-util-visit: "npm:^5.0.0"
@@ -3621,13 +3620,6 @@ __metadata:
   version: 4.0.6
   resolution: "pirates@npm:4.0.6"
   checksum: 10/d02dda76f4fec1cbdf395c36c11cf26f76a644f9f9a1bfa84d3167d0d3154d5289aacc72677aa20d599bb4a6937a471de1b65c995e2aea2d8687cbcd7e43ea5f
-  languageName: node
-  linkType: hard
-
-"plantuml-encoder@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "plantuml-encoder@npm:1.4.0"
-  checksum: 10/cfe8831356bdd60ef80a748a04d3b0bfcbf827a499da6fb5ad853450e7a677129c1ec082cdfbc57817dee3e59c5f1f2d00d8082198173b34ced8196dcb34d8fe
   languageName: node
   linkType: hard
 

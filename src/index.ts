@@ -1,7 +1,7 @@
 import type { Root, Paragraph } from "mdast";
-import plantUMLEncoder from "plantuml-encoder";
 import { visit } from "unist-util-visit";
 import { paragraph, image } from "mdast-builder";
+import { encodeSync } from "@/encoder";
 
 export default function remarkPlantUML(
   { markdownAST }: ParsedTypes,
@@ -17,9 +17,9 @@ export default function remarkPlantUML(
 
   visit(markdownAST, "code", (node, index, parents) => {
     if (node.lang === codeBlockLang && parents) {
-      markdownAST.children[index ?? 0] = paragraph(
+      parents.children[index ?? 0] = paragraph(
         image(
-          `${server}/${imageType}/${plantUMLEncoder.encode(node.value)}`,
+          `${server}/${imageType}/${encodeSync(node.value)}`,
           pluginOptions?.title,
           pluginOptions?.alt ?? codeBlockLang,
         ),
