@@ -1,4 +1,8 @@
-import { deflate, deflateSync } from "@/deflater";
+import { type InputType, deflateRawSync } from "node:zlib";
+
+export function deflate(buff: InputType) {
+  return deflateRawSync(buff, { level: 9 }).toString("binary");
+}
 
 function encode6bit(code: number) {
   if (code < 10) return String.fromCharCode(48 + code); // 0-9
@@ -36,12 +40,8 @@ function encode64(data: string) {
   return r;
 }
 
-export async function encode(puml: string) {
-  return encode64(await deflate(puml));
-}
-
-export function encodeSync(puml: string) {
-  return encode64(deflateSync(puml));
+export function encoder(puml: string) {
+  return encode64(deflate(puml));
 }
 
 if (import.meta.vitest) {

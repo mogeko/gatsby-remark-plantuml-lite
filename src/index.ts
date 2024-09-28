@@ -1,4 +1,4 @@
-import { encodeSync } from "@/encoder";
+import { encoder } from "@/encoder";
 import type { Root } from "mdast";
 import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
@@ -25,7 +25,7 @@ export default function remarkPlantUML(
     if (node.lang === codeBlockLang && parents) {
       parents.children[index ?? 0] = u("paragraph", {}, [
         u("image", {
-          url: `${server}/${imageType}/${encodeSync(node.value)}`,
+          url: `${server}/${imageType}/${encoder(node.value)}`,
           title: pluginOptions?.title,
           alt: pluginOptions?.alt ?? codeBlockLang,
         }),
