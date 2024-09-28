@@ -15,8 +15,8 @@ function encode6bit(b: number) {
 
 function encode3bytes(b1: number, b2: number, b3: number) {
   return encode6bit((b1 >> 2) & 0x3f).concat(
-    encode6bit(((b1 & 0x3) << 4) | ((b2 >> 4) & 0x3f)),
-    encode6bit(((b2 & 0xf) << 2) | ((b3 >> 6) & 0x3f)),
+    encode6bit((((b1 & 0x3) << 4) | (b2 >> 4)) & 0x3f),
+    encode6bit((((b2 & 0xf) << 2) | (b3 >> 6)) & 0x3f),
     encode6bit(b3 & 0x3f),
   );
 }
@@ -61,13 +61,13 @@ if (import.meta.vitest) {
     expect(encode6bit(64)).toStrictEqual("?");
   });
 
-  it("append3bytes", () => {
+  it("encode3bytes", () => {
     expect(encode3bytes(1, 2, 3)).toStrictEqual("0G83");
     expect(encode3bytes(1, 2, 0)).toStrictEqual("0G80");
     expect(encode3bytes(1, 0, 0)).toStrictEqual("0G00");
   });
 
-  it("encode64", () => {
+  it("encode", () => {
     expect(
       encode(Buffer.from([75, 76, 74, 6, 0]).toString("binary")),
     ).toStrictEqual("IqnA1W00");
