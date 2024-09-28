@@ -12,8 +12,16 @@
   },
   "author": "Mogeko <zhengjunyi@live.com>",
   "license": "MIT",
-  "keywords": ["gatsby", "gatsby-plugin", "remark", "plantuml"],
-  "files": ["dist/*", "gatsby-node.js"],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "remark",
+    "plantuml"
+  ],
+  "files": [
+    "dist/*",
+    "gatsby-node.js"
+  ],
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf dist coverage",
@@ -39,7 +47,7 @@
     "typescript": "^5.4.5",
     "vitest": "^2.0.1"
   },
-  "packageManager": "yarn@4.3.0",
+  "packageManager": "yarn@4.5.0",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.6.0"
