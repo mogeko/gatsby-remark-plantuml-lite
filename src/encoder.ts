@@ -1,48 +1,47 @@
-import { type InputType, deflateRawSync } from "node:zlib";
-
-export function deflate(buff: InputType) {
-  return deflateRawSync(buff, { level: 9 }).toString("binary");
-}
+import { deflateRaw } from "pako";
 
 function encode6bit(b: number) {
-  if (b < 10) return String.fromCharCode(48 + b); // 0-9
-  if (b < 36) return String.fromCharCode(55 + b); // A-Z
-  if (b < 62) return String.fromCharCode(61 + b); // a-z
-  if (b === 62) return "-";
-  if (b === 63) return "_";
-  return "?";
+  if (b < 10) return 48 + b; // 0-9
+  if (b < 36) return 55 + b; // A-Z
+  if (b < 62) return 61 + b; // a-z
+  if (b === 62) return 45; // -
+  if (b === 63) return 95; // _
+  return -1;
 }
 
-function encode3bytes(b1: number, b2: number, b3: number) {
-  return encode6bit((b1 >> 2) & 0x3f).concat(
-    encode6bit((((b1 & 0x3) << 4) | (b2 >> 4)) & 0x3f),
-    encode6bit((((b2 & 0xf) << 2) | (b3 >> 6)) & 0x3f),
-    encode6bit(b3 & 0x3f),
+function* encode3bytes(b1: number, b2: number, b3: number) {
+  yield encode6bit((b1 >> 2) & 0x3f);
+  yield encode6bit((((b1 & 0x3) << 4) | (b2 >> 4)) & 0x3f);
+  yield encode6bit((((b2 & 0xf) << 2) | (b3 >> 6)) & 0x3f);
+  yield encode6bit(b3 & 0x3f);
+}
+
+export function encode64(charCodeArray: Uint8Array): Uint8Array {
+  return Uint8Array.from(
+    (function* (arr) {
+      for (let i = 0; i < arr.length; i += 3) {
+        if (i + 2 === arr.length) {
+          // @ts-ignore: It can never get `undefined`
+          yield* encode3bytes(arr[i], arr[i + 1], 0);
+        } else if (i + 1 === arr.length) {
+          // @ts-ignore: It can never get `undefined`
+          yield* encode3bytes(arr[i], 0, 0);
+        } else {
+          // @ts-ignore: It can never get `undefined`
+          yield* encode3bytes(arr[i], arr[i + 1], arr[i + 2]);
+        }
+      }
+    })(charCodeArray),
   );
 }
 
-function encode(s: string) {
-  let r = "";
-  for (let i = 0; i < s.length; i += 3) {
-    if (i + 2 === s.length) {
-      r = r.concat(encode3bytes(s.charCodeAt(i), s.charCodeAt(i + 1), 0));
-    } else if (i + 1 === s.length) {
-      r = r.concat(encode3bytes(s.charCodeAt(i), 0, 0));
-    } else {
-      r = r.concat(
-        encode3bytes(s.charCodeAt(i), s.charCodeAt(i + 1), s.charCodeAt(i + 2)),
-      );
-    }
-  }
-  return r;
-}
-
-export function encoder(puml: string) {
-  return encode(deflate(puml));
+export function encode(puml: string): string {
+  return new TextDecoder("utf-8").decode(
+    encode64(deflateRaw(puml, { level: 9 })),
+  );
 }
 
 if (import.meta.vitest) {
-  const { Buffer } = await import("node:buffer");
   const { expect, it } = await import("vitest");
 
   it("encode6bit", () => {
@@ -52,24 +51,19 @@ if (import.meta.vitest) {
         20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
         38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
         56, 57, 58, 59, 60, 61, 62, 63,
-      ]
-        .map(encode6bit)
-        .join(""),
-    ).toStrictEqual(
-      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_",
-    );
-    expect(encode6bit(64)).toStrictEqual("?");
+      ].map(encode6bit),
+    ).toStrictEqual([
+      48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70, 71, 72,
+      73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
+      97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,
+      112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 45, 95,
+    ]);
+    expect(encode6bit(64)).toStrictEqual(-1);
   });
 
   it("encode3bytes", () => {
-    expect(encode3bytes(1, 2, 3)).toStrictEqual("0G83");
-    expect(encode3bytes(1, 2, 0)).toStrictEqual("0G80");
-    expect(encode3bytes(1, 0, 0)).toStrictEqual("0G00");
-  });
-
-  it("encode", () => {
-    expect(
-      encode(Buffer.from([75, 76, 74, 6, 0]).toString("binary")),
-    ).toStrictEqual("IqnA1W00");
+    expect([...encode3bytes(1, 2, 3)]).toStrictEqual([48, 71, 56, 51]);
+    expect([...encode3bytes(1, 2, 0)]).toStrictEqual([48, 71, 56, 48]);
+    expect([...encode3bytes(1, 0, 0)]).toStrictEqual([48, 71, 48, 48]);
   });
 }

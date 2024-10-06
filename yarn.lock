@@ -961,6 +961,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pako@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@types/pako@npm:2.0.3"
+  checksum: 10/afa618a0a05a931216703a30f4cba6902ce5cd4db8170a480f95bc8e268afebb3bb8deea4444e8292aba86348e400e068af1b5f4c75b9185b3a7efd1999fb78e
+  languageName: node
+  linkType: hard
+
 "@types/responselike@npm:^1.0.0":
   version: 1.0.3
   resolution: "@types/responselike@npm:1.0.3"
@@ -2107,9 +2114,11 @@ __metadata:
     "@tsconfig/strictest": "npm:^2.0.5"
     "@types/mdast": "npm:^4.0.4"
     "@types/node": "npm:^22.0.0"
+    "@types/pako": "npm:^2.0.3"
     "@vitest/coverage-v8": "npm:^2.0.1"
     gatsby-plugin-utils: "npm:^4.13.1"
     mdast-util-from-markdown: "npm:2.0.1"
+    pako: "npm:^2.1.0"
     tsup: "npm:^8.1.0"
     typescript: "npm:^5.4.5"
     unist-builder: "npm:^4.0.0"
@@ -3517,6 +3526,13 @@ __metadata:
   version: 1.0.0
   resolution: "package-json-from-dist@npm:1.0.0"
   checksum: 10/ac706ec856a5a03f5261e4e48fa974f24feb044d51f84f8332e2af0af04fbdbdd5bbbfb9cbbe354190409bc8307c83a9e38c6672c3c8855f709afb0006a009ea
+  languageName: node
+  linkType: hard
+
+"pako@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "pako@npm:2.1.0"
+  checksum: 10/38a04991d0ec4f4b92794a68b8c92bf7340692c5d980255c92148da96eb3e550df7a86a7128b5ac0c65ecddfe5ef3bbe9c6dab13e1bc315086e759b18f7c1401
   languageName: node
   linkType: hard
 
