@@ -44,7 +44,7 @@
     "@types/pako": "^2.0.3",
     "@vitest/coverage-v8": "^2.0.1",
     "gatsby-plugin-utils": "^4.13.1",
-    "mdast-util-from-markdown": "2.0.1",
+    "mdast-util-from-markdown": "2.0.2",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5",
     "vitest": "^2.0.1"
