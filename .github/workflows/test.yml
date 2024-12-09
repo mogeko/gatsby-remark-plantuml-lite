@@ -18,7 +18,7 @@ jobs:
       - run: yarn install --immutable
       - run: yarn biome ci --reporter=github
       - run: yarn run cov
-      - uses: codecov/codecov-action@v5.0.7
+      - uses: codecov/codecov-action@v5.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
