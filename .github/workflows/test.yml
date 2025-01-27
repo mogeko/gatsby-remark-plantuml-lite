@@ -12,13 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js
-        uses: actions/setup-node@v4.1.0
+        uses: actions/setup-node@v4.2.0
         with:
           node-version-file: package.json
       - run: yarn install --immutable
       - run: yarn biome ci --reporter=github
       - run: yarn run cov
-      - uses: codecov/codecov-action@v5.1.2
+      - uses: codecov/codecov-action@v5.3.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
