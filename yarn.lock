@@ -958,11 +958,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^22.0.0":
-  version: 22.15.8
-  resolution: "@types/node@npm:22.15.8"
+  version: 22.15.17
+  resolution: "@types/node@npm:22.15.17"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10/59415322a5e38e2d01d489b0cbf1d88817ba80b51fbb0c8b37f06167a67fc5e0b2201e82d818fa927f884f44fe0419a97a15655e065eb4949b423c1b4b0288d4
+  checksum: 10/3f5870ec1ac16b1dd8e5817de81164df9b69e4cf19cce692cb7c9b1af1deaecfd98b591b56155fcc4aa582f7189a4fc0c8d7d3226fa0387403db615a12dd8cb6
   languageName: node
   linkType: hard
 
