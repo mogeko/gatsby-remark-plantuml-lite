@@ -10,7 +10,7 @@ jobs:
     name: Release Package to NPM and GitHub Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Setup registry url with NPM
         uses: actions/setup-node@v4.4.0
         with:
