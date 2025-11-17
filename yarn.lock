@@ -2147,22 +2147,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.3.10":
-  version: 10.4.1
-  resolution: "glob@npm:10.4.1"
-  dependencies:
-    foreground-child: "npm:^3.1.0"
-    jackspeak: "npm:^3.1.2"
-    minimatch: "npm:^9.0.4"
-    minipass: "npm:^7.1.2"
-    path-scurry: "npm:^1.11.1"
-  bin:
-    glob: dist/esm/bin.mjs
-  checksum: 10/d7bb49d2b413f77bdd59fea4ca86dcc12450deee221af0ca93e09534b81b9ef68fe341345751d8ff0c5b54bad422307e0e44266ff8ad7fbbd0c200e8ec258b16
-  languageName: node
-  linkType: hard
-
-"glob@npm:^10.4.1":
+"glob@npm:^10.3.10, glob@npm:^10.4.1":
   version: 10.4.4
   resolution: "glob@npm:10.4.4"
   dependencies:
@@ -2179,16 +2164,16 @@ __metadata:
   linkType: hard
 
 "glob@npm:^7.1.3, glob@npm:^7.1.4":
-  version: 7.1.6
-  resolution: "glob@npm:7.1.6"
+  version: 7.2.3
+  resolution: "glob@npm:7.2.3"
   dependencies:
     fs.realpath: "npm:^1.0.0"
     inflight: "npm:^1.0.4"
     inherits: "npm:2"
-    minimatch: "npm:^3.0.4"
+    minimatch: "npm:^3.1.1"
     once: "npm:^1.3.0"
     path-is-absolute: "npm:^1.0.0"
-  checksum: 10/7d6ec98bc746980d5fe4d764b9c7ada727e3fbd2a7d85cd96dd95fb18638c9c54a70c692fd2ab5d68a186dc8cd9d6a4192d3df220beed891f687db179c430237
+  checksum: 10/59452a9202c81d4508a43b8af7082ca5c76452b9fcc4a9ab17655822e6ce9b21d4f8fbadabe4fe3faef448294cec249af305e2cd824b7e9aaf689240e5e96a7b
   languageName: node
   linkType: hard
 
@@ -3034,7 +3019,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^3.0.4":
+"minimatch@npm:^3.1.1":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
   dependencies:
