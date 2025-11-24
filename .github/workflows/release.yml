@@ -10,7 +10,7 @@ jobs:
     name: Release Package to NPM and GitHub Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup registry url with NPM
         uses: actions/setup-node@v6.0.0
         with:
@@ -22,7 +22,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Rename before Publish to GitHub Packages
-        uses: mikefarah/yq@v4.48.2
+        uses: mikefarah/yq@v4.49.1
         with:
           cmd: yq -i '.name = "@mogeko/gatsby-remark-plantuml-lite"' 'package.json'
       - name: Setup registry url with GitHub Packages
