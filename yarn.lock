@@ -2139,7 +2139,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:^3.0.2"
     gatsby-plugin-utils: "npm:^4.13.1"
     mdast-util-from-markdown: "npm:2.0.2"
-    pako: "npm:^2.1.0"
+    pako: "npm:^3.0.1"
     tsup: "npm:^8.1.0"
     typescript: "npm:^5.4.5"
     unist-builder: "npm:^4.0.0"
@@ -3460,10 +3460,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pako@npm:^2.1.0":
-  version: 2.2.0
-  resolution: "pako@npm:2.2.0"
-  checksum: 10/4311a3d5fa32d146d4fd926e8b0af43f9d4713034ac53fce78445065893f541da4435b1e77290a49fd80dd49f82163230fc6ccad39530c844d8c6caf3d21848d
+"pako@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "pako@npm:3.0.1"
+  checksum: 10/44cf92d0f46d66d09da18cb570a8a39851970fce39cf4880ae3e322878d6aa283a6b63411fad655a21d32bbcb46921a78a8948588f71475c181ac2bec668435b
   languageName: node
   linkType: hard
 
