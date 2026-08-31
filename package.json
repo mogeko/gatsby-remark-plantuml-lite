@@ -32,7 +32,7 @@
     "cov": "vitest run --coverage"
   },
   "dependencies": {
-    "pako": "^2.1.0",
+    "pako": "^3.0.1",
     "unist-builder": "^4.0.0",
     "unist-util-visit": "^5.0.0"
   },
@@ -41,7 +41,7 @@
     "@tsconfig/strictest": "^2.0.5",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.0.3",
-    "@types/pako": "^2.0.3",
+    "@types/pako": "^3.0.0",
     "@vitest/coverage-v8": "^3.0.2",
     "gatsby-plugin-utils": "^4.13.1",
     "mdast-util-from-markdown": "2.0.2",
