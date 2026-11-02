@@ -998,10 +998,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pako@npm:^2.0.3":
-  version: 2.0.4
-  resolution: "@types/pako@npm:2.0.4"
-  checksum: 10/9be5167f5cb45d405d92e8b320219e6d26f244880893425abb16b998cde0386185f048d60de609672f1e8654c44b77344e754138da3784460f4543fe8576fa62
+"@types/pako@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/pako@npm:3.0.0"
+  dependencies:
+    pako: "npm:*"
+  checksum: 10/27a8825dea0b5cb892d80e60d9c3377113d2d18592e5d9358bd532e16f9b07efe7eaaba06cfb60feae8a2e95d5c50b25dca08cccf31b50e9438131cb6e0f097d
   languageName: node
   linkType: hard
 
@@ -2135,11 +2137,11 @@ __metadata:
     "@tsconfig/strictest": "npm:^2.0.5"
     "@types/mdast": "npm:^4.0.4"
     "@types/node": "npm:^24.0.3"
-    "@types/pako": "npm:^2.0.3"
+    "@types/pako": "npm:^3.0.0"
     "@vitest/coverage-v8": "npm:^3.0.2"
     gatsby-plugin-utils: "npm:^4.13.1"
     mdast-util-from-markdown: "npm:2.0.2"
-    pako: "npm:^2.1.0"
+    pako: "npm:^3.0.3"
     tsup: "npm:^8.1.0"
     typescript: "npm:^5.4.5"
     unist-builder: "npm:^4.0.0"
@@ -3460,10 +3462,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pako@npm:^2.1.0":
-  version: 2.2.0
-  resolution: "pako@npm:2.2.0"
-  checksum: 10/4311a3d5fa32d146d4fd926e8b0af43f9d4713034ac53fce78445065893f541da4435b1e77290a49fd80dd49f82163230fc6ccad39530c844d8c6caf3d21848d
+"pako@npm:*, pako@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "pako@npm:3.0.3"
+  checksum: 10/7d9182f7cfb9dc66d24a7d8492ddb6c4cc3fb5cb5da2e9c0d7f5ba6cd68c941230f93d4f2cc93dfe289d72525b3f9a9814bb7119861707ad2bd07019faf4f4f0
   languageName: node
   linkType: hard
 
@@ -4668,24 +4670,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit-parents@npm:^6.0.0":
-  version: 6.0.1
-  resolution: "unist-util-visit-parents@npm:6.0.1"
+"unist-util-visit-parents@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "unist-util-visit-parents@npm:6.1.0"
   dependencies:
     "@types/unist": "npm:^3.0.0"
     unist-util-is: "npm:^6.0.0"
-  checksum: 10/645b3cbc5e923bc692b1eb1a9ca17bffc5aabc25e6090ff3f1489bff8effd1890b28f7a09dc853cb6a7fa0da8581bfebc9b670a68b53c4c086cb9610dfd37701
+  checksum: 10/aaf70d04be02e8eb78050ffc3a2e3acc29c67a05ef8a59f009ed6c4d2e4aa5321dd83e242ef1b9b830dab6e4442c969ee91cd6972f25f2140d8824de25906fdc
   languageName: node
   linkType: hard
 
 "unist-util-visit@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "unist-util-visit@npm:5.1.0"
+  version: 5.2.0
+  resolution: "unist-util-visit@npm:5.2.0"
   dependencies:
     "@types/unist": "npm:^3.0.0"
     unist-util-is: "npm:^6.0.0"
-    unist-util-visit-parents: "npm:^6.0.0"
-  checksum: 10/340fc1929062d21156200284105caad79cc188bd98f285b60aba887492a70e6e6cadbc7e383a68909c7e0fdd83f855cb9f4184ad8e5aa153eb2d810445aea8e5
+    unist-util-visit-parents: "npm:^6.1.0"
+  checksum: 10/33cd45cab326c497c5bef838f901d398bdf7c151e380b82e4ec74b3b2c0a1c5e6f5c95b26f3d9057d64920ca9d317a642b1eebc023194390ace4c04ca200352f
   languageName: node
   linkType: hard
 
